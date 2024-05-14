@@ -111,5 +111,16 @@ const xinyaoJs = (function (window) {
                 );
             }
         },
+
+        detectDevice() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // 檢查是否為一般的行動裝置關鍵字
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
+                return 'Mobile';
+            }
+            // 若未檢出行動裝置，則預設為PC
+            return 'PC';
+        }
     }
 }(window));

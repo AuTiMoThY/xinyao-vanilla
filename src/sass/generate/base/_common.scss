@@ -33,15 +33,16 @@ a {
 
     flex: 0 0 auto;
 
-    &.show-desktop {
-        @include rwd-mobile {
-            display: none;
-        }
-    }
-    &.show-mobile {
+}
+
+.show-desktop {
+    @include rwd-mobile {
         display: none;
-        @include rwd-mobile {
-            display: block;
-        }
+    }
+}
+.show-mobile {
+    display: none;
+    @include rwd-mobile {
+        display: block;
     }
 }

@@ -182,7 +182,7 @@
 
     <body>
         <div class="xinyao_goTop" id="goTop">
-            <a class="xinyao_goTop-inner" href="javascript:;" @click.prevent="goToTop">
+            <a class="xinyao_goTop-inner" href="javascript:;">
                 <i class="fa-solid fa-arrow-up"></i>
             </a>
         </div>
@@ -191,7 +191,7 @@
         <div class="body_wrap">
             <!-- .site_aside  START-->
             <aside class="site_aside" id="Aside">
-                <div class="site_aside-inner" :class="{'js-show': highlightMenuItem === 'home' && isMobile}">
+                <div class="site_aside-inner">
                     <div class="site_aside-hd">
                         <div class="site_aside-hd-top">
                             <div class="member_info">
@@ -205,8 +205,8 @@
                             </div>
                             <div class="ctrl-btns">
                                 <button class="ctrl-btn" @click="handleSearch">
-                                    <img src="./assets/images/icon-search.svg" alt="" v-if="!isOpenSearch" />
-                                    <img src="./assets/images/icon-close.svg" alt="" v-if="isOpenSearch" />
+                                    <img src="./assets/images/icon-search.svg" alt="" />
+                                    <img src="./assets/images/icon-close.svg" alt="" />
                                 </button>
                                 <a class="ctrl-btn" href="./home.html"
                                     ><img src="./assets/images/icon-home.svg" alt=""
@@ -220,13 +220,11 @@
                                 <small class="font-note">2024/12/31 到期</small>
                             </div>
                         </div>
-                        <div
-                            class="site_menu-item"
-                            :class="{ 'js-highlight': menuStore.highlightedMenuItem === 'cart' }">
+                        <div class="site_menu-item">
                             <a class="inner" href="./cart.html">
                                 <span class="txt">挑選中調理帖</span>
                                 <span class="line"></span>
-                                <span class="cart_num">{{cart_num}}</span>
+                                <span class="cart_num"></span>
                             </a>
                         </div>
                     </div>
@@ -236,23 +234,16 @@
                             <nav class="site_menu">
                                 <strong class="site_menu-title font-h3 txt-Gray-01">新增</strong>
                                 <ul class="site_menu-list">
-                                    <li
-                                        class="site_menu-item"
-                                        :class="{ 'js-highlight': menuStore.highlightedMenuItem === 'xinyao-2' }">
+                                    <li class="site_menu-item">
                                         <a class="inner font-body-m" href="./xinyao-2.html">緊張應變</a>
                                     </li>
-                                    <li
-                                        class="site_menu-item"
-                                        :class="{ 'js-highlight': menuStore.highlightedMenuItem === 'xinyao-3' }">
+                                    <li class="site_menu-item">
                                         <a class="inner font-body-m" href="./xinyao-3.html">症狀初期</a>
                                     </li>
-                                    <li
-                                        class="site_menu-item"
-                                        :class="{'open-sublist': menuStore.highlightedMenuItem === 'xinyao-1'}">
+                                    <li class="site_menu-item">
                                         <div class="inner font-body-m">心藥目錄</div>
                                         <!-- 電腦版顯示 -->
-
-                                        <ul class="sublist" v-if="!isMobile">
+                                        <ul class="sublist show-desktop">
                                             <li class="subitem">
                                                 <a href="./xinyao-1.html" class="inner">
                                                     <div class="txt">恐懼</div>
@@ -323,8 +314,7 @@
                                             </li>
                                         </ul>
                                         <!-- 手機版顯示 -->
-
-                                        <ul class="sublist" v-if="isMobile">
+                                        <ul class="sublist show-mobile">
                                             <li class="subitem">
                                                 <div class="inner">
                                                     <div class="txt">恐懼</div>
@@ -470,14 +460,10 @@
                             <nav class="site_menu">
                                 <strong class="site_menu-title font-h3 txt-Gray-01">管理</strong>
                                 <ul class="site_menu-list">
-                                    <li
-                                        class="site_menu-item"
-                                        :class="{ 'js-highlight': menuStore.highlightedMenuItem === 'history' }">
+                                    <li class="site_menu-item">
                                         <a class="inner" href="./history.html">調理帖紀錄</a>
                                     </li>
-                                    <li
-                                        class="site_menu-item"
-                                        :class="{ 'js-highlight': menuStore.highlightedMenuItem === 'favourite' }">
+                                    <li class="site_menu-item">
                                         <a class="inner" href="./favourite.html">常用調理帖</a>
                                     </li>
                                 </ul>
@@ -500,7 +486,7 @@
             <!-- 頁面內容  START-->
             <!-- =========================================================================-->
             <main class="page_main page-favourite" id="favourite">
-                <div class="search_bar" :class="{'js-open': isOpenSearch}">
+                <div class="search_bar">
                     <div class="search_bar-field">
                         <div class="search_bar-icon">
                             <svg data-src="./assets/images/icon-search.svg"></svg>
@@ -511,7 +497,7 @@
                         <a class="xinyao_btn" type="button" href="./search.html">搜尋</a>
                     </div>
                 </div>
-                <div class="hr" v-if="!isMobile"></div>
+                <div class="hr show-desktop"></div>
 
                 <div class="page_main-container">
                     <h1 class="page_main-title txt-main-color">常用調理帖</h1>
@@ -631,9 +617,9 @@
         <!-- =========================================================================-->
 
         <script src="https://unpkg.com/external-svg-loader@latest/svg-loader.min.js" async></script>
-        <script src="./assets/js/eventBus.js?v=20240414"></script>
+        <!-- <script src="./assets/js/eventBus.js?v=20240414"></script>
         <script src="./assets/js/script.js?v=20240414"></script>
-        <script type="module" src="./assets/js/frontend/aside.js?v=20240414"></script>
+        <script type="module" src="./assets/js/frontend/aside.js?v=20240414"></script> -->
 
         <script src="./assets/js/xinyaoJs/core.js?v=20240414"></script>
         <script src="./assets/js/xinyaoJs/customElements.js?v=20240414"></script>

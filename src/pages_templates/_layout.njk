@@ -1,3 +1,6 @@
+<% from "./_datas/webXinyao1Menu.njk" import webXinyao1Menu %>
+<% from "./_datas/mobileXinyao1Menu.njk" import mobileXinyao1Menu %>
+<% from "./_datas/xinyao-1.njk" import xinyaoData1 %>
 <!doctype html>
 <html lang="zh-Hant">
     <head>
@@ -9,11 +12,7 @@
 
     <body>
         <div class="xinyao_goTop" id="goTop">
-            <a
-                class="xinyao_goTop-inner"
-                href="javascript:;"
-                @click.prevent="goToTop"
-            >
+            <a class="xinyao_goTop-inner" href="javascript:;" >
                 <i class="fa-solid fa-arrow-up"></i>
             </a>
         </div>
@@ -33,9 +32,9 @@
             src="https://unpkg.com/external-svg-loader@latest/svg-loader.min.js"
             async
         ></script>
-        <script src="[[JS_PATH]]eventBus.js?v=[[VERSION]]"></script>
+        <!-- <script src="[[JS_PATH]]eventBus.js?v=[[VERSION]]"></script>
         <script src="[[JS_PATH]]script.js?v=[[VERSION]]"></script>
-        <script type="module" src="[[JS_PATH]]frontend/aside.js?v=[[VERSION]]"></script>
+        <script type="module" src="[[JS_PATH]]frontend/aside.js?v=[[VERSION]]"></script> -->
         
         <% include "_foot-script.njk" %>
         
