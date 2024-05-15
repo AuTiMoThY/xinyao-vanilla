@@ -3,9 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     xinyaoJs.customElements().inputField();
     xinyaoJs.customElements().passwordField();
     xinyaoJs.customElements().submitBtn();
+    xinyaoJs.customElements().amountField();
 
     const simpleBar = new SimpleBar(document.querySelector(".site_aside-bd"));
 
+    // 側邊欄
     // 選擇所有的菜單項目加上箭頭icon和點擊展開子列表的事件監聽器
     const menuItems = document.querySelectorAll(".site_menu-item");
 
@@ -28,21 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // 切換 "open-sublist" 類
                 item.classList.toggle("open-sublist");
             });
-        }
-    });
-
-    // 元素在手機版或電腦版是否顯示
-    const detectdeviceElm = this.querySelectorAll("[data-detectdevice]");
-    console.log(detectdeviceElm);
-    detectdeviceElm.forEach((elm) => {
-        if (xinyaoJs.detectDevice() == "Mobile") {
-            if (elm.dataset.detectdevice != "show-mobile") {
-                elm.remove();
-            }
-        } else {
-            if (elm.dataset.detectdevice != "show-desktop") {
-                elm.remove();
-            }
         }
     });
 });

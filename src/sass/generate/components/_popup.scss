@@ -1,5 +1,13 @@
 .popup {
     @include popup_base(800);
+
+
+    transition: all .3s ease-in-out;
+    &.js-hidden {
+        
+        z-index: -1;
+        opacity: 0;
+    }
     &-block {
         @include rwd-mobile {
             width: calc(100% - 32px);

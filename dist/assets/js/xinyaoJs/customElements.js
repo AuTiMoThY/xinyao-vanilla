@@ -78,6 +78,29 @@
                     constructor() {
                         // Always call super first in constructor
                         super("amount-field");
+                        // const inputValue = parseInt(this.input.value);
+                        // console.log(inputValue);
+                        this.input = this.querySelector("input");
+                        this.input.value = this.input.getAttribute('value') || 1;
+                        console.log(this.input.value);
+                        this.decrementBtn = this.querySelector(".decrement-btn");
+                        this.incrementBtn = this.querySelector(".increment-btn");
+
+                        this.decrementBtn.addEventListener("click", () => this.decrement());
+                        this.incrementBtn.addEventListener("click", () => this.increment());
+
+                    }
+                    decrement() {
+                        console.log("--");
+                        let currentValue = parseInt(this.input.value);
+                        if (currentValue > 1) {
+                            this.input.value = --currentValue;
+                        }
+                    }
+                    increment() {
+                        console.log("++");
+                        let currentValue = parseInt(this.input.value);
+                        this.input.value = ++currentValue;
                     }
                 }
                 customElements.define("amount-field", amountField);
