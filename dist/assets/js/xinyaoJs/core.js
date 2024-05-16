@@ -51,7 +51,7 @@ const xinyaoJs = (function (window) {
     // Lazy loading...
     function handleLazyLoading() {
         if ('loading' in HTMLImageElement.prototype) {
-            console.log('支援原生 lazy loading!!');
+            // console.log('支援原生 lazy loading!!');
         } else {
             // Implement fallback lazy loading here
         }

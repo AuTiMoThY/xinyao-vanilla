@@ -22,6 +22,8 @@
                         <div class="xinyao_datatable-th info">說明</div>
                         <div class="xinyao_datatable-th action">操作</div>
                     </div>
+
+                    <!-- 調理項目總數: [[xinyaoData1[0].item | length]] -->
                     <% for item in xinyaoData1[0].item %>
                     <!-- 調理項目 [[loop.index]] -->
                     <!-- .xinyao_datatable-tr -->
@@ -41,13 +43,13 @@
                                         </div>
                                     </div>
                                 </amount-field>
-                                <button type="button" class="action_btn action-addToList">加入</button>
+                                <button type="button" class="action_btn action-addToList" onclick="xinyaoJs.handleAddToList(this)">加入</button>
                             </div>
                         </div>
                     </div>
                     <!-- /.xinyao_datatable-tr END -->
-                    <!-- 選擇部位popup .popup -->
-                    <!-- 預設class="js-hidden"關閉popup -->
+                    <!-- 調理項目 [[loop.index]] 選擇部位 -->
+                    <!-- class="js-hidden"預設不開啟popup -->
                     <div class="popup popup_select js-hidden" id="popup-[[loop.index]]">
                         <div class="popup-block">
                             <div class="popup-hd ">
@@ -57,16 +59,17 @@
                             <div class="popup-bd">
                                 <div class="select_parts">
                                     <ul class="select_parts-list">
+                                        <!-- 部位項目總數: [[item.parts | length]] -->
                                         <% for p_item in item.parts %>
                                         <!-- 選擇部位項目 [[loop.index]] -->
                                         <!-- .select_parts-item -->
                                         <li class="select_parts-item">
-                                            <label for="'part-' + index" class="item_label">
-                                                <input type="checkbox" class="item_input--checkbox" :id="'part-' + index" :value="part.part_name" v-model="selectedParts">
+                                            <label for="part-[[loop.index]]" class="item_label">
+                                                <input type="checkbox" class="item_input--checkbox" id="part-[[loop.index]]" value="[[p_item.part_name]]">
                                                 <div class="select_parts-item-inner">
-                                                    <span class="label">{{part.part_name}}</span>
+                                                    <span class="label">[[p_item.part_name]]</span>
                                                     <span class="img">
-                                                        <img :src="part.part_img" :alt="part.part_name">
+                                                        <img src="[[p_item.part_img]]" alt="[[p_item.part_name]]">
                                                     </span>
                                                 </div>
                                             </label>
@@ -78,11 +81,11 @@
                             </div>
                             <div class="popup-ft">
                                 <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
-                                <button @click="handleSelection(true)" type="button" class="xinyao_btn xinyao_btn-nobg">無/未知</button>
-                                <button @click="handleSelection(false)" type="button" class="xinyao_btn" :disabled="!hasSelected">確認</button>
+                                <button onclick="xinyaoJs.handleSelection(true)" type="button" class="xinyao_btn xinyao_btn-nobg">無/未知</button>
+                                <button onclick="xinyaoJs.handleSelection(false)" type="button" class="xinyao_btn" disabled="true">確認</button>
                             </div>
                             <!-- 點擊後，關閉popup -->
-                            <button @click="showPopupSelect = false" type="button" class="popup-close">
+                            <button onclick="xinyaoJs.closePopup(this.closest('.popup'))" type="button" class="popup-close">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>

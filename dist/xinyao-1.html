@@ -42,12 +42,6 @@
         <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
 
         <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
-        <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
-
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://unpkg.com/vue-demi"></script>
-        <script src="https://unpkg.com/pinia"></script>
 
         <script>
             const baseUrl =
@@ -391,6 +385,8 @@
                                 <div class="xinyao_datatable-th action">操作</div>
                             </div>
 
+                            <!-- 調理項目總數: 5 -->
+
                             <!-- 調理項目 1 -->
                             <!-- .xinyao_datatable-tr -->
                             <div class="xinyao_datatable-tr" id="xinyaoItem-1">
@@ -415,13 +411,18 @@
                                                 </div>
                                             </div>
                                         </amount-field>
-                                        <button type="button" class="action_btn action-addToList">加入</button>
+                                        <button
+                                            type="button"
+                                            class="action_btn action-addToList"
+                                            onclick="xinyaoJs.handleAddToList(this)">
+                                            加入
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.xinyao_datatable-tr END -->
-                            <!-- 選擇部位popup .popup -->
-                            <!-- 預設class="js-hidden"關閉popup -->
+                            <!-- 調理項目 1 選擇部位 -->
+                            <!-- class="js-hidden"預設不開啟popup -->
                             <div class="popup popup_select js-hidden" id="popup-1">
                                 <div class="popup-block">
                                     <div class="popup-hd">
@@ -431,20 +432,23 @@
                                     <div class="popup-bd">
                                         <div class="select_parts">
                                             <ul class="select_parts-list">
+                                                <!-- 部位項目總數: 4 -->
+
                                                 <!-- 選擇部位項目 1 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-1" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-1"
+                                                            value="頭面部" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">頭面部</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827170913961396.jpeg"
+                                                                    alt="頭面部" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -454,17 +458,18 @@
                                                 <!-- 選擇部位項目 2 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-2" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-2"
+                                                            value="右頸胸肩" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">右頸胸肩</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827171071177117.jpeg"
+                                                                    alt="右頸胸肩" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -474,17 +479,18 @@
                                                 <!-- 選擇部位項目 3 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-3" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-3"
+                                                            value="左腿內側" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">左腿內側</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827171340944094.jpeg"
+                                                                    alt="左腿內側" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -494,17 +500,18 @@
                                                 <!-- 選擇部位項目 4 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-4" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-4"
+                                                            value="背部軀幹" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">背部軀幹</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827171265736573.jpeg"
+                                                                    alt="背部軀幹" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -516,21 +523,24 @@
                                     <div class="popup-ft">
                                         <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
                                         <button
-                                            @click="handleSelection(true)"
+                                            onclick="xinyaoJs.handleSelection(true)"
                                             type="button"
                                             class="xinyao_btn xinyao_btn-nobg">
                                             無/未知
                                         </button>
                                         <button
-                                            @click="handleSelection(false)"
+                                            onclick="xinyaoJs.handleSelection(false)"
                                             type="button"
                                             class="xinyao_btn"
-                                            :disabled="!hasSelected">
+                                            disabled="true">
                                             確認
                                         </button>
                                     </div>
                                     <!-- 點擊後，關閉popup -->
-                                    <button @click="showPopupSelect = false" type="button" class="popup-close">
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'))"
+                                        type="button"
+                                        class="popup-close">
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
                                 </div>
@@ -563,13 +573,18 @@
                                                 </div>
                                             </div>
                                         </amount-field>
-                                        <button type="button" class="action_btn action-addToList">加入</button>
+                                        <button
+                                            type="button"
+                                            class="action_btn action-addToList"
+                                            onclick="xinyaoJs.handleAddToList(this)">
+                                            加入
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.xinyao_datatable-tr END -->
-                            <!-- 選擇部位popup .popup -->
-                            <!-- 預設class="js-hidden"關閉popup -->
+                            <!-- 調理項目 2 選擇部位 -->
+                            <!-- class="js-hidden"預設不開啟popup -->
                             <div class="popup popup_select js-hidden" id="popup-2">
                                 <div class="popup-block">
                                     <div class="popup-hd">
@@ -579,20 +594,23 @@
                                     <div class="popup-bd">
                                         <div class="select_parts">
                                             <ul class="select_parts-list">
+                                                <!-- 部位項目總數: 4 -->
+
                                                 <!-- 選擇部位項目 1 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-1" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-1"
+                                                            value="背部軀幹" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">背部軀幹</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827173147854785.jpeg"
+                                                                    alt="背部軀幹" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -602,17 +620,18 @@
                                                 <!-- 選擇部位項目 2 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-2" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-2"
+                                                            value="腿部正面" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">腿部正面</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827173368266826.jpeg"
+                                                                    alt="腿部正面" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -622,17 +641,18 @@
                                                 <!-- 選擇部位項目 3 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-3" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-3"
+                                                            value="男性 陰部" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">男性 陰部</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827173496559655.jpeg"
+                                                                    alt="男性 陰部" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -642,17 +662,18 @@
                                                 <!-- 選擇部位項目 4 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-4" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-4"
+                                                            value="女性陰部" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">女性陰部</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/2017082717370232232.jpeg"
+                                                                    alt="女性陰部" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -664,21 +685,24 @@
                                     <div class="popup-ft">
                                         <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
                                         <button
-                                            @click="handleSelection(true)"
+                                            onclick="xinyaoJs.handleSelection(true)"
                                             type="button"
                                             class="xinyao_btn xinyao_btn-nobg">
                                             無/未知
                                         </button>
                                         <button
-                                            @click="handleSelection(false)"
+                                            onclick="xinyaoJs.handleSelection(false)"
                                             type="button"
                                             class="xinyao_btn"
-                                            :disabled="!hasSelected">
+                                            disabled="true">
                                             確認
                                         </button>
                                     </div>
                                     <!-- 點擊後，關閉popup -->
-                                    <button @click="showPopupSelect = false" type="button" class="popup-close">
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'))"
+                                        type="button"
+                                        class="popup-close">
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
                                 </div>
@@ -711,13 +735,18 @@
                                                 </div>
                                             </div>
                                         </amount-field>
-                                        <button type="button" class="action_btn action-addToList">加入</button>
+                                        <button
+                                            type="button"
+                                            class="action_btn action-addToList"
+                                            onclick="xinyaoJs.handleAddToList(this)">
+                                            加入
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.xinyao_datatable-tr END -->
-                            <!-- 選擇部位popup .popup -->
-                            <!-- 預設class="js-hidden"關閉popup -->
+                            <!-- 調理項目 3 選擇部位 -->
+                            <!-- class="js-hidden"預設不開啟popup -->
                             <div class="popup popup_select js-hidden" id="popup-3">
                                 <div class="popup-block">
                                     <div class="popup-hd">
@@ -727,20 +756,23 @@
                                     <div class="popup-bd">
                                         <div class="select_parts">
                                             <ul class="select_parts-list">
+                                                <!-- 部位項目總數: 6 -->
+
                                                 <!-- 選擇部位項目 1 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-1" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-1"
+                                                            value="右頸胸肩" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">右頸胸肩</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827190985268526.jpeg"
+                                                                    alt="右頸胸肩" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -750,17 +782,18 @@
                                                 <!-- 選擇部位項目 2 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-2" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-2"
+                                                            value="背部軀幹" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">背部軀幹</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/2017082719110687687.jpeg"
+                                                                    alt="背部軀幹" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -770,17 +803,18 @@
                                                 <!-- 選擇部位項目 3 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-3" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-3"
+                                                            value="胸腹軀幹" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">胸腹軀幹</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827191211301130.jpeg"
+                                                                    alt="胸腹軀幹" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -790,17 +824,18 @@
                                                 <!-- 選擇部位項目 4 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-4" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-4"
+                                                            value="左臂前方" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">左臂前方</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827191456405640.jpeg"
+                                                                    alt="左臂前方" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -810,17 +845,18 @@
                                                 <!-- 選擇部位項目 5 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-5" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-5"
+                                                            value="右腳掌" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">右腳掌</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827191655635563.jpeg"
+                                                                    alt="右腳掌" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -830,17 +866,18 @@
                                                 <!-- 選擇部位項目 6 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-6" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-6"
+                                                            value="男性 陰部" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">男性 陰部</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827191780038003.jpeg"
+                                                                    alt="男性 陰部" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -852,21 +889,24 @@
                                     <div class="popup-ft">
                                         <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
                                         <button
-                                            @click="handleSelection(true)"
+                                            onclick="xinyaoJs.handleSelection(true)"
                                             type="button"
                                             class="xinyao_btn xinyao_btn-nobg">
                                             無/未知
                                         </button>
                                         <button
-                                            @click="handleSelection(false)"
+                                            onclick="xinyaoJs.handleSelection(false)"
                                             type="button"
                                             class="xinyao_btn"
-                                            :disabled="!hasSelected">
+                                            disabled="true">
                                             確認
                                         </button>
                                     </div>
                                     <!-- 點擊後，關閉popup -->
-                                    <button @click="showPopupSelect = false" type="button" class="popup-close">
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'))"
+                                        type="button"
+                                        class="popup-close">
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
                                 </div>
@@ -898,13 +938,18 @@
                                                 </div>
                                             </div>
                                         </amount-field>
-                                        <button type="button" class="action_btn action-addToList">加入</button>
+                                        <button
+                                            type="button"
+                                            class="action_btn action-addToList"
+                                            onclick="xinyaoJs.handleAddToList(this)">
+                                            加入
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.xinyao_datatable-tr END -->
-                            <!-- 選擇部位popup .popup -->
-                            <!-- 預設class="js-hidden"關閉popup -->
+                            <!-- 調理項目 4 選擇部位 -->
+                            <!-- class="js-hidden"預設不開啟popup -->
                             <div class="popup popup_select js-hidden" id="popup-4">
                                 <div class="popup-block">
                                     <div class="popup-hd">
@@ -914,20 +959,23 @@
                                     <div class="popup-bd">
                                         <div class="select_parts">
                                             <ul class="select_parts-list">
+                                                <!-- 部位項目總數: 3 -->
+
                                                 <!-- 選擇部位項目 1 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-1" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-1"
+                                                            value="左頸胸肩" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">左頸胸肩</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827192299259925.jpeg"
+                                                                    alt="左頸胸肩" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -937,17 +985,18 @@
                                                 <!-- 選擇部位項目 2 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-2" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-2"
+                                                            value="背部軀幹" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">背部軀幹</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827192341154115.jpeg"
+                                                                    alt="背部軀幹" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -957,17 +1006,18 @@
                                                 <!-- 選擇部位項目 3 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-3" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-3"
+                                                            value="右手掌背" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">右手掌背</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827192443384338.jpeg"
+                                                                    alt="右手掌背" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -979,21 +1029,24 @@
                                     <div class="popup-ft">
                                         <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
                                         <button
-                                            @click="handleSelection(true)"
+                                            onclick="xinyaoJs.handleSelection(true)"
                                             type="button"
                                             class="xinyao_btn xinyao_btn-nobg">
                                             無/未知
                                         </button>
                                         <button
-                                            @click="handleSelection(false)"
+                                            onclick="xinyaoJs.handleSelection(false)"
                                             type="button"
                                             class="xinyao_btn"
-                                            :disabled="!hasSelected">
+                                            disabled="true">
                                             確認
                                         </button>
                                     </div>
                                     <!-- 點擊後，關閉popup -->
-                                    <button @click="showPopupSelect = false" type="button" class="popup-close">
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'))"
+                                        type="button"
+                                        class="popup-close">
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
                                 </div>
@@ -1026,13 +1079,18 @@
                                                 </div>
                                             </div>
                                         </amount-field>
-                                        <button type="button" class="action_btn action-addToList">加入</button>
+                                        <button
+                                            type="button"
+                                            class="action_btn action-addToList"
+                                            onclick="xinyaoJs.handleAddToList(this)">
+                                            加入
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.xinyao_datatable-tr END -->
-                            <!-- 選擇部位popup .popup -->
-                            <!-- 預設class="js-hidden"關閉popup -->
+                            <!-- 調理項目 5 選擇部位 -->
+                            <!-- class="js-hidden"預設不開啟popup -->
                             <div class="popup popup_select js-hidden" id="popup-5">
                                 <div class="popup-block">
                                     <div class="popup-hd">
@@ -1042,20 +1100,23 @@
                                     <div class="popup-bd">
                                         <div class="select_parts">
                                             <ul class="select_parts-list">
+                                                <!-- 部位項目總數: 5 -->
+
                                                 <!-- 選擇部位項目 1 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-1" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-1"
+                                                            value="胸腹軀幹" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">胸腹軀幹</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827192524372437.jpeg"
+                                                                    alt="胸腹軀幹" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -1065,17 +1126,18 @@
                                                 <!-- 選擇部位項目 2 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-2" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-2"
+                                                            value="臀部" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">臀部</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827192763366336.jpeg"
+                                                                    alt="臀部" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -1085,17 +1147,18 @@
                                                 <!-- 選擇部位項目 3 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-3" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-3"
+                                                            value="大腿" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">大腿</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827192958695869.jpeg"
+                                                                    alt="大腿" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -1105,17 +1168,18 @@
                                                 <!-- 選擇部位項目 4 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-4" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-4"
+                                                            value="大腿" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">大腿</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/2017082719300735735.jpeg"
+                                                                    alt="大腿" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -1125,17 +1189,18 @@
                                                 <!-- 選擇部位項目 5 -->
                                                 <!-- .select_parts-item -->
                                                 <li class="select_parts-item">
-                                                    <label for="'part-' + index" class="item_label">
+                                                    <label for="part-5" class="item_label">
                                                         <input
                                                             type="checkbox"
                                                             class="item_input--checkbox"
-                                                            :id="'part-' + index"
-                                                            :value="part.part_name"
-                                                            v-model="selectedParts" />
+                                                            id="part-5"
+                                                            value="小腿" />
                                                         <div class="select_parts-item-inner">
-                                                            <span class="label">{{part.part_name}}</span>
+                                                            <span class="label">小腿</span>
                                                             <span class="img">
-                                                                <img :src="part.part_img" :alt="part.part_name" />
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827193119051905.jpeg"
+                                                                    alt="小腿" />
                                                             </span>
                                                         </div>
                                                     </label>
@@ -1147,21 +1212,24 @@
                                     <div class="popup-ft">
                                         <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
                                         <button
-                                            @click="handleSelection(true)"
+                                            onclick="xinyaoJs.handleSelection(true)"
                                             type="button"
                                             class="xinyao_btn xinyao_btn-nobg">
                                             無/未知
                                         </button>
                                         <button
-                                            @click="handleSelection(false)"
+                                            onclick="xinyaoJs.handleSelection(false)"
                                             type="button"
                                             class="xinyao_btn"
-                                            :disabled="!hasSelected">
+                                            disabled="true">
                                             確認
                                         </button>
                                     </div>
                                     <!-- 點擊後，關閉popup -->
-                                    <button @click="showPopupSelect = false" type="button" class="popup-close">
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'))"
+                                        type="button"
+                                        class="popup-close">
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
                                 </div>
@@ -1186,12 +1254,22 @@
         <!-- =========================================================================-->
 
         <script src="https://unpkg.com/external-svg-loader@latest/svg-loader.min.js" async></script>
+        <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
         <!-- <script src="./assets/js/eventBus.js?v=20240414"></script>
         <script src="./assets/js/script.js?v=20240414"></script>
         <script type="module" src="./assets/js/frontend/aside.js?v=20240414"></script> -->
 
         <script src="./assets/js/xinyaoJs/core.js?v=20240414"></script>
         <script src="./assets/js/xinyaoJs/customElements.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/openPopup.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/closePopup.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/handleSelection.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/handleAddToList.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/handleAddToCart.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/setSelectedItems.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/setSelectedItemsTemp.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/getSelectedItems.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/getSelectedItemsTemp.js?v=20240414"></script>
         <script src="./assets/js/frontend/main.js?v=20240414"></script>
 
         <script type="module" src="./assets/js/frontend/xinyao.js?v=20240414"></script>
