@@ -79,10 +79,10 @@
                         // Always call super first in constructor
                         super("amount-field");
                         // const inputValue = parseInt(this.input.value);
-                        // console.log(inputValue);
+                        // xinyaoJs.log(inputValue);
                         this.input = this.querySelector("input");
                         this.input.value = this.input.getAttribute('value') || 1;
-                        // console.log(this.input.value);
+                        // xinyaoJs.log(this.input.value);
                         this.decrementBtn = this.querySelector(".decrement-btn");
                         this.incrementBtn = this.querySelector(".increment-btn");
 
@@ -91,14 +91,14 @@
 
                     }
                     decrement() {
-                        console.log("--");
+                        xinyaoJs.log("--");
                         let currentValue = parseInt(this.input.value);
                         if (currentValue > 1) {
                             this.input.value = --currentValue;
                         }
                     }
                     increment() {
-                        console.log("++");
+                        xinyaoJs.log("++");
                         let currentValue = parseInt(this.input.value);
                         this.input.value = ++currentValue;
                     }

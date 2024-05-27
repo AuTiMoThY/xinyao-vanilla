@@ -51,7 +51,7 @@ const xinyaoJs = (function (window) {
     // Lazy loading...
     function handleLazyLoading() {
         if ('loading' in HTMLImageElement.prototype) {
-            // console.log('支援原生 lazy loading!!');
+            // xinyaoJs.log('支援原生 lazy loading!!');
         } else {
             // Implement fallback lazy loading here
         }
@@ -73,7 +73,7 @@ const xinyaoJs = (function (window) {
 
         init() {
             const _ = this;
-            console.log(_);
+            xinyaoJs.log("_", _);
             document.body.classList.add('js-dom_ready');
 
             _.resizeThrottler();
@@ -102,10 +102,21 @@ const xinyaoJs = (function (window) {
             if (debug) {
                 const stack = new Error().stack;
                 const callerInfo = stack.split('\n')[2].trim();  // 取得呼叫 `customLog` 的堆疊資訊
+                const now = new Date();
+                const timestamp = now.toLocaleString('zh-TW', { 
+                    year: 'numeric', 
+                    month: '2-digit', 
+                    day: '2-digit', 
+                    hour: '2-digit', 
+                    minute: '2-digit', 
+                    second: '2-digit', 
+                    hour12: false 
+                });
                 console.log(
-                    `%c${label} %c${callerInfo}:%c\n`,
+                    `%c${label}\n %c${callerInfo}\n %c[${timestamp}]%c\n`,
                     "color: brown; font-weight: bolder; font-size: 1.25rem;",  // label 的樣式
                     "color: blue;",   // callerInfo 的樣式
+                    "color: green;",  // timestamp 的樣式
                     "color: black;",  // 重置為預設風格
                     ...args
                 );

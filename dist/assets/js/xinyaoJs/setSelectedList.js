@@ -1,11 +1,11 @@
 (function (xinyaoJs) {
-    xinyaoJs.setSelectedItems = function (data) {
+    xinyaoJs.setSelectedList = function (data) {
         const _ = this;
-        console.log("call: setSelectedItems()");
-        console.log(data);
+        xinyaoJs.log("call: setSelectedList()");
+        // xinyaoJs.log("setSelectedList data", data);
 
-        let selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
-        // console.log(selectedItems);
+        // let selectedItems = JSON.parse(localStorage.getItem('selectedItem')) || [];
+        // xinyaoJs.log(selectedItems);
         
         // // 檢查項目是否已存在於 selectedItems 中
         // const existingItemIndex = selectedItems.findIndex(item => item.name === data.name);
@@ -16,9 +16,11 @@
         //     // 添加新項目
         //     selectedItems.push(data);
         // }
-        selectedItems.push(data);
+        // selectedItems.push(data);
         
         // 儲存 selectedItems 到 localStorage
-        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+        localStorage.setItem('selectedList', JSON.stringify(data));
+
+        // xinyaoJs.log("xinyaoJs.setSelectedList: ", localStorage.getItem('selectedList'));
     }
 })(xinyaoJs);

@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // 檢查是否所有欄位都已填寫
         if (userIdInput.value.trim() && userPwInput.value.trim()) {
+            // 設定初始資料
+            let selectedList = JSON.parse(localStorage.getItem('selectedList')) || [];
+            let selectedListFormFav = JSON.parse(localStorage.getItem('selectedListFormFav')) || [];
+            localStorage.setItem('selectedList', JSON.stringify(selectedList));
+            localStorage.setItem('selectedListFormFav', JSON.stringify(selectedListFormFav));
+
             setTimeout(() => {
                 // document.getElementById("loginForm").submit();
 

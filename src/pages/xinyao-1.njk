@@ -43,6 +43,7 @@
                                         </div>
                                     </div>
                                 </amount-field>
+                                <!-- dist\assets\js\xinyaoJs\handleAddToList.js -->
                                 <button type="button" class="action_btn action-addToList" onclick="xinyaoJs.handleAddToList(this)">加入</button>
                             </div>
                         </div>
@@ -81,11 +82,11 @@
                             </div>
                             <div class="popup-ft">
                                 <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
-                                <button onclick="xinyaoJs.handleSelection(true)" type="button" class="xinyao_btn xinyao_btn-nobg">無/未知</button>
-                                <button onclick="xinyaoJs.handleSelection(false)" type="button" class="xinyao_btn" disabled="true">確認</button>
+                                <button onclick="xinyaoJs.handleSelection(true, this)" type="button" class="xinyao_btn xinyao_btn-nobg">無/未知</button>
+                                <button onclick="xinyaoJs.handleSelection(false, this)" type="button" class="xinyao_btn" disabled="true">確認</button>
                             </div>
                             <!-- 點擊後，關閉popup -->
-                            <button onclick="xinyaoJs.closePopup(this.closest('.popup'))" type="button" class="popup-close">
+                            <button onclick="xinyaoJs.closePopup(this.closest('.popup'), 'clearLast')" type="button" class="popup-close">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
@@ -101,6 +102,17 @@
             </div>
         </div>
 
+        <div class="notification js-hidden" data-ref="notification-add">
+            <div class="notification-block">
+                <div class="notification-icon">
+                    <svg data-src="[[IMG_PATH]]icon-check_circle.svg"></svg>
+                </div>
+                <div class="notification-title">加入成功</div>
+                <div class="notification-cnt">
+                    您可以到<a class="link" href="./cart.html">挑選中調理帖</a>查看已加入的調理項目。
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- /.page_main END  !! -->

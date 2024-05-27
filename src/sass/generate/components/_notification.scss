@@ -1,5 +1,9 @@
 .notification {
     @include popup_base(500);
+
+    &.js-hidden {
+        display: none;
+    }
     &-block {
         @include rwd-mobile {
             width: calc(100% - 32px);

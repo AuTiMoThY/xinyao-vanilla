@@ -928,6 +928,9 @@ a {
           flex-direction: column;
   gap: 32px;
 }
+.notification.js-hidden {
+  display: none;
+}
 @media (max-width: 768px) {
   .notification-block {
     width: calc(100% - 32px);
