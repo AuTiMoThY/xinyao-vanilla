@@ -82,8 +82,8 @@
                             </div>
                             <div class="popup-ft">
                                 <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
-                                <button onclick="xinyaoJs.handleSelection(true, this)" type="button" class="xinyao_btn xinyao_btn-nobg">無/未知</button>
-                                <button onclick="xinyaoJs.handleSelection(false, this)" type="button" class="xinyao_btn" disabled="true">確認</button>
+                                <button onclick="xinyaoJs.handleSelection(true, this)" type="button" class="xinyao_btn xinyao_btn-no_part xinyao_btn-nobg">無/未知</button>
+                                <button onclick="xinyaoJs.handleSelection(false, this)" type="button" class="xinyao_btn xinyao_btn-has_part" disabled="true">確認</button>
                             </div>
                             <!-- 點擊後，關閉popup -->
                             <button onclick="xinyaoJs.closePopup(this.closest('.popup'), 'clearLast')" type="button" class="popup-close">

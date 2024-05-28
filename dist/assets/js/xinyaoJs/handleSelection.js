@@ -2,10 +2,10 @@
     xinyaoJs.handleSelection = function (isUnknown, event) {
         const _ = this;
         xinyaoJs.log("call: handleSelection()");
+        console.log(event);
         if (isUnknown) {
-            console.log(event);
             // 點擊"無/未知"
-            // 將當前的項目
+            // 取當前的項目
             const currentItem = _.getCurrentItem();
             xinyaoJs.log("currentItem", currentItem);
 
@@ -25,14 +25,9 @@
 
             // 更新購物車數量
             _.updateCartNum();
-
-            // const selectedItems = _.getselectedItemTemp();
-            // _.setSelectedItem(selectedItems);
-            // _.clearSelectedItemTemp();
         } else {
             // 點擊"確認"
             // 取選擇的部位
-            console.log(event);
 
         }
     }
