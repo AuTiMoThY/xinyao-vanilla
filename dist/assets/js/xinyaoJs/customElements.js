@@ -105,6 +105,15 @@
                 }
                 customElements.define("amount-field", amountField);
             },
+            selectField: function () {
+                class selectField extends baseField {
+                    constructor() {
+                        // Always call super first in constructor
+                        super("select-field");
+                    }
+                }
+                customElements.define("select-field", selectField);
+            },
             // 送出按鈕:
             // 開啟禁用按鈕，並更新按鈕文字
             submitBtn: function () {

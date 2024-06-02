@@ -22,11 +22,36 @@
                     <div class="cart-col order_info">
                         <div class="title">訂單資訊</div>
                         <div class="hr"></div>
-                        <input-field label="調理帖名稱" placeholder="請輸入調理帖名稱" id="p_name" v-model="p_name" :error="fieldErrors.p_name"></input-field>
-                        <select-field label="調理帖運行時數" id="p_time" v-model="p_time" :options="p_time_options" :error="fieldErrors.p_time"></select-field>
-                        <!-- <input-field label="姓名" placeholder="請輸入您的姓名" id="u_name" v-model="u_name" :error="fieldErrors.u_name"></input-field>
-                        <input-field label="居住地址" placeholder="請輸入居住地址" id="u_addr" v-model="u_addr" :error="fieldErrors.u_addr"></input-field>
-                        <input-field label="電話" placeholder="請輸入電話號碼" id="u_phone" v-model="u_phone" :error="fieldErrors.u_phone"></input-field> -->
+                        <!-- 自定義輸入框 input-field 組件: dist\assets\js\xinyaoJs\customElements.js -->
+                        <input-field class="xinyao_field xinyao_field-v">
+                            <label for="p_name" class="xinyao_field-label">調理帖名稱</label>
+                            <div class="xinyao_field-block">
+                                <div class="xinyao_field-ctrler">
+                                    <input
+                                        type="text"
+                                        id="p_name"
+                                        name="p_name"
+                                        class="form-control"
+                                        placeholder="請輸入調理帖名稱" />
+                                </div>
+                                <!-- 個別欄位錯誤信息 -->
+                                <div class="error-msg"></div>
+                            </div>
+                        </input-field>
+                        <select-field class="xinyao_field xinyao_field-v xinyao_field-select">
+                            <label for="p_time" class="xinyao_field-label">調理帖運行時數</label>
+                            <div class="xinyao_field-block">
+                                <div class="xinyao_field-ctrler" >
+                                    <svg data-src="[[IMG_PATH]]arrow-down.svg"></svg>
+                                    <select class="form-control" id="p_time">
+                                        <% for i in range(1, 11) %>
+                                        <option value="[[i]]">[[i]]小時</option>
+                                        <% endfor %>
+                                    </select>
+                                </div>
+                                <div class="error-msg"></div> <!-- 顯示錯誤信息 -->
+                            </div>
+                        </select-field>
 
                     </div>
                     <div class="cart-col cart_info grid-table">
@@ -35,21 +60,50 @@
                             <div class="cart_info-th grid-cell amount">份量</div>
                             <div class="cart_info-th grid-cell action">操作</div>
                         </div>
-                        <div class="grid-tablerow cart_info-no_data" v-if="isNodata"> 尚無調理項目 </div>
-                        <div class="grid-tablerow cart_info-list" v-for="(item, index) in selectedItems" :key="index">
-                            <div class="cart_info-td grid-cell name" data-th="調理項目">{{ item.name + (item.part ? ' (' + item.part + ')' : '') }}</div>
+                        <div class="grid-tablerow cart_info-no_data"> 尚無調理項目 </div>
+                        <% for item in cartListData %>
+                        <!-- 共 [[cartListData | length ]] -->
+                        <!-- 調理項目 [[loop.index]] -->
+                        <div class="grid-tablerow cart_info-item">
+                            <% if item.parts.length > 0 %>
+                            <div class="cart_info-td grid-cell name" data-th="調理項目">
+                                [[item.name]]
+                                (
+                                    <% for partItem in item.parts %>
+                                        <% if loop.index != 1 %>
+                                        , [[partItem]]
+                                        <% else %>
+                                        [[partItem]]
+                                        <% endif %>
+                                    <% endfor %>
+                                )
+                            </div>
+                            <% else %>
+                            <div class="cart_info-td grid-cell name" data-th="調理項目">
+                                [[item.name]]
+                            </div>
+                            <% endif %>
                             <div class="cart_info-td grid-cell amount" data-th="份量">
-                                <amount-field v-model="item.amount" @amount-changed="updateSelectedItems"></amount-field>
+                                <amount-field class="xinyao_field xinyao_field-v xinyao_field-amount">
+                                    <div class="xinyao_field-block">
+                                        <div class="xinyao_field-ctrler">
+                                            <button type="button" class="ctrl_number decrement-btn"> <i class="fa-solid fa-minus"></i> </button>
+                                            <input type="number" class="form-control" value="1">
+                                            <button type="button" class="ctrl_number increment-btn"> <i class="fa-solid fa-plus"></i> </button>
+                                        </div>
+                                    </div>
+                                </amount-field>
                             </div>
                             <div class="cart_info-td grid-cell action" data-th="操作">
-                                <button type="button" class="action_btn" @click="removeItem(index)">
+                                <button type="button" class="action_btn">
                                     <svg data-src="[[IMG_PATH]]icon-delete.svg"></svg>
                                 </button>
                             </div>
                         </div>
-                        <div class="grid-tablerow cart_info-list-error" v-if="isOverItemsNum">
+                        <% endfor %>
+                        <div class="grid-tablerow cart_info-item-error">
                             <div class="cart_info-td grid-cell error" style="grid-column: span 3;">
-                                一帖調理帖最多5種心藥 ({{selectedItems.length}}/5)
+                                一帖調理帖最多5種心藥 (6/5)
                             </div>
                         </div>
                         <div class="grid-tablerow cart_info-tip">
@@ -70,12 +124,12 @@
                                     <div class="title">調理值</div>
                                     <div class="txt">
                                         <span class="error" v-if="isOverAmountSum">總調理值最多10點</span>
-                                        <b>{{amount_sum}}</b> / 10
+                                        <b>3</b> / 10
                                     </div>
                                 </div>
                                 <div class="total-row">
                                     <div class="title">花費點數</div>
-                                    <div class="txt"><b>{{p_time}}</b></div>
+                                    <div class="txt"><b>1</b></div>
                                 </div>
                             </div>
                         </div>
@@ -83,8 +137,8 @@
                     </div>
                 </div>
                 <div class="cart-ft">
-                    <button @click="addToFav" type="button" class="xinyao_btn xinyao_btn-nobg" :disabled="isDisabled">加入常用</button>
-                    <button @click="sendCart" type="button" class="xinyao_btn" :disabled="isDisabled">立即調理</button>
+                    <button type="button" class="xinyao_btn xinyao_btn-nobg">加入常用</button>
+                    <button type="button" class="xinyao_btn">立即調理</button>
                 </div>
             </div>
         </div>
