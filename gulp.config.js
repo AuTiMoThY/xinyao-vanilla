@@ -1,22 +1,20 @@
 const project = "xinyao";
-const version = "20240414";
+const version = "20240612";
 
 const entry = 'src';
 const output = 'dist';
+const prodOutput = 'dist_prod';
 
 // 使用 export default 導出配置物件
 export default {
     project: project,
+    version: version,
     port: 8082,
     entry: `./${entry}`,
     output: `./${output}`,
+    prodOutput: `./${prodOutput}`,
     entryPath: {
         sass: `./${entry}/sass`,
-    },
-    outputPath: {
-        html: `./${output}`,
-        sass: `./${output}/assets/css`,
-        js: `./${output}/assets/js`
     },
     sassOpt: {
         outputStyle: 'expanded',
@@ -28,9 +26,5 @@ export default {
     },
     njkOpt: {
         PROJECT_NAME: project,
-        VERSION: version,
-        IMG_PATH: `./assets/images/`,
-        CSS_PATH: `./assets/css/`,
-        JS_PATH: `./assets/js/`,
     }
 };

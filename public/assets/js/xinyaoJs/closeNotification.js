@@ -1,7 +1,9 @@
 (function (xinyaoJs) {
     xinyaoJs.closeNotification = function (elm) {
         xinyaoJs.log("call: closeNotification(elm)");
-        elm.classList.add("js-hidden");
+        setTimeout(() => {
+            elm.classList.add("js-hidden");
+        }, 3000);
 
         
     }

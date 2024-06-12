@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant">
     <head>
-        <title>症狀初期 | 佛印山心藥系統</title>
+        <title>緊張應變 | 佛印山心藥系統</title>
 
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,11 +14,11 @@
         <!-- 讓手機不判斷它是電話號碼變顏色-->
         <meta name="format-detection" content="telephone=no" />
 
-        <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
-        <link rel="manifest" href="./favicon/site.webmanifest" />
-        <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5" />
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="./assets/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#dbdcdc" />
         <meta name="theme-color" content="#ffffff" />
 
@@ -53,33 +53,12 @@
             console.log(baseUrl);
         </script>
 
-        <link rel="stylesheet" href="./assets/css/style.css?v=20240414" />
+        <link rel="stylesheet" href="./assets/css/style.css?v=" />
 
         <!-- ====================== -->
         <!-- ===  症狀初期(xinyao-3) 頁面專用script === -->
         <script>
             const currentMenuItem = "xinyao-3";
-            // 這邊示意:
-            // 撈出的資料，以JSON格式儲存在 currentSubCateData
-            const currentSubCateData = [
-                {
-                    txt: "",
-                    note: "",
-                    item: [
-                        {
-                            name: "症狀初期",
-                            directions: "症狀初期藥方說明",
-                            parts: [
-                                {
-                                    part_name: "部位1",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827170913961396.jpeg",
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ];
         </script>
     </head>
 
@@ -411,79 +390,124 @@
                                 <div class="xinyao_datatable-th info">說明</div>
                                 <div class="xinyao_datatable-th action">操作</div>
                             </div>
-                            <div class="xinyao_datatable-tr" v-for="(item, index) in data" :key="index">
-                                <div class="xinyao_datatable-td name" data-th="調理項目">{{item.name}}</div>
+
+                            <!-- 調理項目總數: 5 -->
+
+                            <!-- 調理項目 1 -->
+                            <!-- .xinyao_datatable-tr -->
+                            <div class="xinyao_datatable-tr" id="xinyaoItem-1">
+                                <div class="xinyao_datatable-td name" data-th="調理項目">症狀初期</div>
                                 <div class="xinyao_datatable-td info" data-th="說明">
-                                    <p class="txt" v-html="item.directions"></p>
+                                    <p class="txt">症狀初期藥方說明</p>
                                 </div>
                                 <div class="xinyao_datatable-td action" data-th="操作">
                                     <div class="action-amount">
-                                        <amount-field v-model="item.amount"></amount-field>
-                                        <button type="button" class="action_btn" @click="addToList(item)">加入</button>
+                                        <amount-field class="xinyao_field xinyao_field-v xinyao_field-amount">
+                                            <div class="xinyao_field-block">
+                                                <div class="xinyao_field-ctrler">
+                                                    <button type="button" class="ctrl_number decrement-btn">
+                                                        <i class="fa-solid fa-minus"></i>
+                                                    </button>
+                                                    <input type="number" class="form-control" value="1" />
+                                                    <button type="button" class="ctrl_number increment-btn">
+                                                        <i class="fa-solid fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </amount-field>
+                                        <!-- dist\assets\js\xinyaoJs\handleAddToList.js -->
+                                        <button
+                                            type="button"
+                                            class="action_btn action-addToList"
+                                            onclick="xinyaoJs.handleAddToList(this)">
+                                            加入
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                            <!-- /.xinyao_datatable-tr END -->
+                            <!-- 調理項目 1 選擇部位 -->
+                            <!-- class="js-hidden"預設不開啟popup -->
+                            <div class="popup popup_select js-hidden" id="popup-1">
+                                <div class="popup-block">
+                                    <div class="popup-hd">
+                                        <b class="popup-title txt-main-color">請選擇您不適的部位</b>
+                                        <small class="font-note txt-sub-color">可複選</small>
+                                    </div>
+                                    <div class="popup-bd">
+                                        <div class="select_parts">
+                                            <ul class="select_parts-list">
+                                                <!-- 部位項目總數: 1 -->
+
+                                                <!-- 選擇部位項目 1 -->
+                                                <!-- .select_parts-item -->
+                                                <li class="select_parts-item">
+                                                    <label for="part-1" class="item_label">
+                                                        <input
+                                                            type="checkbox"
+                                                            class="item_input--checkbox"
+                                                            id="part-1"
+                                                            value="部位1" />
+                                                        <div class="select_parts-item-inner">
+                                                            <span class="label">部位1</span>
+                                                            <span class="img">
+                                                                <img
+                                                                    src="http://maha-sati.org/admin/attached/media/20170827/20170827170913961396.jpeg"
+                                                                    alt="部位1" />
+                                                            </span>
+                                                        </div>
+                                                    </label>
+                                                </li>
+                                                <!-- /.select_parts-item END -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="popup-ft">
+                                        <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
+                                        <button
+                                            onclick="xinyaoJs.handleSelection(true, this)"
+                                            type="button"
+                                            class="xinyao_btn xinyao_btn-no_part xinyao_btn-nobg">
+                                            無/未知
+                                        </button>
+                                        <button
+                                            onclick="xinyaoJs.handleSelection(false, this)"
+                                            type="button"
+                                            class="xinyao_btn xinyao_btn-has_part"
+                                            disabled="true">
+                                            確認
+                                        </button>
+                                    </div>
+                                    <!-- 點擊後，關閉popup -->
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'), 'clearLast')"
+                                        type="button"
+                                        class="popup-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.popup END -->
+                            <!-- 調理項目 1 END -->
                         </div>
                     </div>
-                    <div class="xinyao_datatable-ft" v-if="isMobile">
+                    <div class="xinyao_datatable-ft show-mobile">
                         <a href="./home.html" class="xinyao_btn xinyao_btn-nobg">回目錄</a>
                         <a href="./cart.html" class="xinyao_btn">查看已挑選</a>
                     </div>
-                    <!-- <div class="xinyao_datatable-pagination" v-if="isMobile">
-                <button class="xinyao_datatable-pagination-btn" @click="prevDatatable">上一個</button>
-                <span class="xinyao_datatable-pagination-number"><span class="current">{{currentDatatable}}</span> / {{totalDatatable}}</span>
-                <button class="xinyao_datatable-pagination-btn" @click="nextDatatable">下一個</button>
-            </div> -->
                 </div>
-                <div v-if="showPopupSelect" class="popup popup_select">
-                    <div class="popup-block">
-                        <div class="popup-hd">
-                            <b class="popup-title txt-main-color">請選擇您不適的部位</b>
-                            <small class="font-note txt-sub-color">可複選</small>
+
+                <div class="notification js-hidden" data-ref="notification-add">
+                    <div class="notification-block">
+                        <div class="notification-icon">
+                            <svg data-src="./assets/images/icon-check_circle.svg"></svg>
                         </div>
-                        <div class="popup-bd">
-                            <div class="select_parts">
-                                <ul class="select_parts-list">
-                                    <li class="select_parts-item" v-for="(part, index) in selectParts">
-                                        <label :for="'part-' + index" class="item_label">
-                                            <input
-                                                type="checkbox"
-                                                class="item_input--checkbox"
-                                                :id="'part-' + index"
-                                                :value="part.part_name"
-                                                v-model="selectedParts" />
-                                            <div class="select_parts-item-inner">
-                                                <span class="label">{{part.part_name}}</span>
-                                                <span class="img">
-                                                    <img :src="part.part_img" :alt="part.part_name" />
-                                                </span>
-                                            </div>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="notification-title">加入成功</div>
+                        <div class="notification-cnt">
+                            您可以到<a class="link" href="./cart.html">挑選中調理帖</a>查看已加入的調理項目。
                         </div>
-                        <div class="popup-ft">
-                            <button @click="handleSelection(true)" type="button" class="xinyao_btn xinyao_btn-nobg">
-                                無/未知
-                            </button>
-                            <button
-                                @click="handleSelection(false)"
-                                type="button"
-                                class="xinyao_btn"
-                                :disabled="!hasSelected">
-                                確認
-                            </button>
-                        </div>
-                        <button @click="showPopupSelect = false" type="button" class="popup-close">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
                     </div>
                 </div>
-                <notification
-                    :show="showNotification"
-                    :msgtitle="notificationTitle"
-                    :msgcnt="notificationCnt"></notification>
             </main>
 
             <!-- /.page_main END  !! -->
@@ -496,43 +520,47 @@
 
         <script src="https://unpkg.com/external-svg-loader@latest/svg-loader.min.js" async></script>
         <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
-        <!-- <script src="./assets/js/eventBus.js?v=20240414"></script>
-        <script src="./assets/js/script.js?v=20240414"></script>
-        <script type="module" src="./assets/js/frontend/aside.js?v=20240414"></script> -->
+        <!-- <script src="./assets/js/eventBus.js?v="></script>
+        <script src="./assets/js/script.js?v="></script>
+        <script type="module" src="./assets/js/frontend/aside.js?v="></script> -->
 
-        <script src="./assets/js/xinyaoJs/core.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/core.js?v="></script>
 
         <!-- 自定義元素 -->
-        <script src="./assets/js/xinyaoJs/customElements.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/customElements.js?v="></script>
+
         <!-- popup 開啟或關閉 -->
-        <script src="./assets/js/xinyaoJs/openPopup.js?v=20240414"></script>
-        <script src="./assets/js/xinyaoJs/closePopup.js?v=20240414"></script>
-        <!-- Notification 開啟或關閉 -->
-        <script src="./assets/js/xinyaoJs/openNotification.js?v=20240414"></script>
-        <script src="./assets/js/xinyaoJs/closeNotification.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/openPopup.js?v="></script>
+        <script src="./assets/js/xinyaoJs/closePopup.js?v="></script>
+
+        <!-- notification 開啟或關閉 -->
+        <script src="./assets/js/xinyaoJs/openNotification.js?v="></script>
+        <script src="./assets/js/xinyaoJs/closeNotification.js?v="></script>
+
+        <!-- dialog 開啟或關閉 -->
+        <script src="./assets/js/xinyaoJs/closeDialog.js?v="></script>
+
         <!-- 選擇部位按鈕"無/未知"或"確定部位" -->
-        <script src="./assets/js/xinyaoJs/handleSelection.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/handleSelection.js?v="></script>
         <!-- 加入至挑選中 -->
-        <script src="./assets/js/xinyaoJs/handleAddToList.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/handleAddToList.js?v="></script>
 
         <!-- 選擇部位的監聽器 -->
-        <script src="./assets/js/xinyaoJs/setupPartSelection.js?v=20240414"></script>
-        <!--  -->
-        <script src="./assets/js/xinyaoJs/handleAddToCart.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/setupPartSelection.js?v="></script>
 
         <!-- 設置當前選擇的項目 -->
-        <script src="./assets/js/xinyaoJs/setCurrentItem.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/setCurrentItem.js?v="></script>
         <!-- 取得當前選擇的項目 -->
-        <script src="./assets/js/xinyaoJs/getCurrentItem.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/getCurrentItem.js?v="></script>
         <!-- 清除當前選擇的項目 -->
-        <script src="./assets/js/xinyaoJs/clearCurrentItem.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/clearCurrentItem.js?v="></script>
         <!-- 設置挑選中項目 -->
-        <script src="./assets/js/xinyaoJs/setSelectedList.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/setSelectedList.js?v="></script>
         <!-- 取得挑選中項目 -->
-        <script src="./assets/js/xinyaoJs/getSelectedList.js?v=20240414"></script>
-        <script src="./assets/js/xinyaoJs/updateCartNum.js?v=20240414"></script>
-        <script src="./assets/js/frontend/main.js?v=20240414"></script>
+        <script src="./assets/js/xinyaoJs/getSelectedList.js?v="></script>
+        <!-- 更新數量 -->
+        <script src="./assets/js/xinyaoJs/updateCartNum.js?v="></script>
 
-        <script type="module" src="./assets/js/frontend/xinyao.js?v=20240414"></script>
+        <script src="./assets/js/frontend/main.js?v="></script>
     </body>
 </html>

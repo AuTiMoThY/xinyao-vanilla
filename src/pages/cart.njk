@@ -60,7 +60,11 @@
                             <div class="cart_info-th grid-cell amount">份量</div>
                             <div class="cart_info-th grid-cell action">操作</div>
                         </div>
+                        <!-- 若沒有任何一筆調理項目，則顯示這段 ↓↓↓ -->
                         <div class="grid-tablerow cart_info-no_data"> 尚無調理項目 </div>
+                        <!-- 若沒有任何一筆調理項目，則顯示這段 ↑↑↑ -->
+
+                        <!-- 有任何一筆調理項目，顯示這段 ↓↓↓ -->
                         <% for item in cartListData %>
                         <!-- 共 [[cartListData | length ]] -->
                         <!-- 調理項目 [[loop.index]] -->
@@ -101,11 +105,17 @@
                             </div>
                         </div>
                         <% endfor %>
+                        <!-- 有任何一筆調理項目，顯示這段 ↑↑↑ -->
+
+                        <!-- 挑選超過5種心藥，顯示這段 ↓↓↓ -->
                         <div class="grid-tablerow cart_info-item-error">
                             <div class="cart_info-td grid-cell error" style="grid-column: span 3;">
                                 一帖調理帖最多5種心藥 (6/5)
                             </div>
                         </div>
+                        <!-- 挑選超過5種心藥，顯示這段 ↑↑↑ -->
+
+
                         <div class="grid-tablerow cart_info-tip">
                             <div class="cart_info-td grid-cell tip" style="grid-column: span 3;">
                                 <div class="tip-title">小提醒</div>
@@ -123,13 +133,15 @@
                                 <div class="total-row">
                                     <div class="title">調理值</div>
                                     <div class="txt">
-                                        <span class="error" v-if="isOverAmountSum">總調理值最多10點</span>
-                                        <b>3</b> / 10
+                                        <!-- 若調理值超過10，顯示這段 ↓↓↓ -->
+                                        <span class="error">總調理值最多10點</span>
+                                        <!-- 若調理值超過10，顯示這段 ↑↑↑ -->
+                                        <b class="number">3</b> / 10
                                     </div>
                                 </div>
                                 <div class="total-row">
                                     <div class="title">花費點數</div>
-                                    <div class="txt"><b>1</b></div>
+                                    <div class="txt"><b  class="number">1</b></div>
                                 </div>
                             </div>
                         </div>
@@ -137,16 +149,34 @@
                     </div>
                 </div>
                 <div class="cart-ft">
-                    <button type="button" class="xinyao_btn xinyao_btn-nobg">加入常用</button>
-                    <button type="button" class="xinyao_btn">立即調理</button>
+                    <button type="button" class="xinyao_btn xinyao_btn-nobg" onclick="handleAddToFavorite()">加入常用</button>
+                    <button type="button" class="xinyao_btn" onclick="handleStartCooking()">立即調理</button>
                 </div>
             </div>
         </div>
 
-        <!-- 通知元件 (notification) -->
-        <!-- dist\assets\js\vue-components.js -->
-        <notification :show="showNotification" :msgtitle="notificationTitle" :msgcnt="notificationCnt"></notification>
-
+        <div class="notification js-hidden" data-ref="notification-add">
+            <div class="notification-block">
+                <div class="notification-icon">
+                    <svg data-src="[[IMG_PATH]]icon-check_circle.svg"></svg>
+                </div>
+                <div class="notification-title">加入成功</div>
+                <div class="notification-cnt">
+                    您可以到<a class="link" href="./favourite.html">常用調理帖</a>查看已加入的調理項目。
+                </div>
+            </div>
+        </div>
+        <div class="notification js-hidden" data-ref="notification-send">
+            <div class="notification-block">
+                <div class="notification-icon">
+                    <svg data-src="[[IMG_PATH]]icon-check_circle.svg"></svg>
+                </div>
+                <div class="notification-title">送出成功</div>
+                <div class="notification-cnt">
+                    即將帶您至<a class="link" href="./history.html">調理帖紀錄</a>查看已送出的調理帖。
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- /.page_main END  !! -->
@@ -157,5 +187,5 @@
 <% endblock %>
 
 <% block page_script %>
-<script type="module" src="[[JS_PATH]]frontend/cart.js?v=[[VERSION]]"></script>
+<script src="[[JS_PATH]]frontend/cart.js?v=[[VERSION]]"></script>
 <% endblock %>
