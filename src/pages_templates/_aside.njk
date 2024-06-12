@@ -12,9 +12,9 @@
                     </div>
                 </div>
                 <div class="ctrl-btns">
-                    <button class="ctrl-btn" @click="handleSearch">
-                        <img src="[[IMG_PATH]]icon-search.svg" alt="">
-                        <img src="[[IMG_PATH]]icon-close.svg" alt="">
+                    <button class="ctrl-btn" onclick="xinyaoJs.toggleSearch()">
+                        <img class="open_search" src="[[IMG_PATH]]icon-search.svg" alt="">
+                        <img class="close_search" src="[[IMG_PATH]]icon-close.svg" alt="">
                     </button>
                     <a class="ctrl-btn" href="./home.html"><img src="[[IMG_PATH]]icon-home.svg" alt=""></a>
                 </div>
@@ -67,7 +67,7 @@
                                         <div class="txt">[[item.label]]</div>
                                         <div class="note">
                                             <% for subitem in item.list %>
-                                            <a href="./xinyao-1-mobile.html" class="note-link">[[subitem]]</a>
+                                            <a href="./xinyao-1.html" class="note-link">[[subitem]]</a>
                                             <% endfor %>
                                         </div>
                                     </div>

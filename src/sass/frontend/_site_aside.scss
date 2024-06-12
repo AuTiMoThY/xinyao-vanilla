@@ -112,6 +112,7 @@
         }
         @include rwd-mobile {
             padding: var(--spacing-2x);
+            min-height: 80px;
             .ctrl-btns {
                 display: flex;
                 gap: var(--spacing-2x);
@@ -128,6 +129,22 @@
                 img {
                     display: block;
                     @include wh(12);
+
+                    &.open_search {
+                        display: block;
+
+                        .js-open-search & {
+                            display: none;
+                        }
+                    }
+                    &.close_search {
+                        display: none;
+
+                        .js-open-search & {
+                            display: block;
+                        }
+                    }
+                    
                 }
 
                 &:hover {
@@ -197,4 +214,23 @@
 .simplebar-track.simplebar-vertical {
     // right: -16px;
     opacity: 0.5;
+}
+
+
+.site_menu-item {
+    .sublist {
+        &.show-desktop {
+            display: block;
+            @include rwd-mobile {
+                display: none;
+            }
+        }
+
+        &.show-mobile {
+            display: none;
+            @include rwd-mobile {
+                display: block;
+            }
+        }
+    }
 }

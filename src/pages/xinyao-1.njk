@@ -51,52 +51,52 @@
                                 <button type="button" class="action_btn action-addToList" onclick="xinyaoJs.handleAddToList(this)">加入</button>
                             </div>
                         </div>
+                        <!-- 調理項目 [[loop.index]] 選擇部位 -->
+                        <!-- class="js-hidden"預設不開啟popup -->
+                        <div class="popup popup_select js-hidden" id="popup-[[loop.index]]">
+                            <div class="popup-block">
+                                <div class="popup-hd ">
+                                    <b class="popup-title txt-main-color">請選擇您不適的部位</b>
+                                    <small class="font-note txt-sub-color">可複選</small>
+                                </div>
+                                <div class="popup-bd">
+                                    <div class="select_parts">
+                                        <ul class="select_parts-list">
+                                            <!-- 部位項目總數: [[item.parts | length]] -->
+                                            <% for p_item in item.parts %>
+                                            <!-- 選擇部位項目 [[loop.index]] -->
+                                            <!-- .select_parts-item -->
+                                            <li class="select_parts-item">
+                                                <label for="part-[[item.id]]-[[loop.index]]" class="item_label">
+                                                    <input type="checkbox" class="item_input--checkbox" id="part-[[item.id]]-[[loop.index]]" value="[[p_item.part_name]]">
+                                                    <div class="select_parts-item-inner">
+                                                        <span class="label">[[p_item.part_name]]</span>
+                                                        <span class="img">
+                                                            <img src="[[p_item.part_img]]" alt="[[p_item.part_name]]">
+                                                        </span>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                            <!-- /.select_parts-item END -->
+                                            <% endfor %>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="popup-ft">
+                                    <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
+                                    <button onclick="xinyaoJs.handleSelection(true, this)" type="button" class="xinyao_btn xinyao_btn-no_part xinyao_btn-nobg">無/未知</button>
+                                    <button onclick="xinyaoJs.handleSelection(false, this)" type="button" class="xinyao_btn xinyao_btn-has_part" disabled="true">確認</button>
+                                </div>
+                                <!-- 點擊後，關閉popup -->
+                                <button onclick="xinyaoJs.closePopup(this.closest('.popup'), 'clearLast')" type="button" class="popup-close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.popup END -->
+                        <!-- 調理項目 [[loop.index]] END -->
                     </div>
                     <!-- /.xinyao_datatable-tr END -->
-                    <!-- 調理項目 [[loop.index]] 選擇部位 -->
-                    <!-- class="js-hidden"預設不開啟popup -->
-                    <div class="popup popup_select js-hidden" id="popup-[[loop.index]]">
-                        <div class="popup-block">
-                            <div class="popup-hd ">
-                                <b class="popup-title txt-main-color">請選擇您不適的部位</b>
-                                <small class="font-note txt-sub-color">可複選</small>
-                            </div>
-                            <div class="popup-bd">
-                                <div class="select_parts">
-                                    <ul class="select_parts-list">
-                                        <!-- 部位項目總數: [[item.parts | length]] -->
-                                        <% for p_item in item.parts %>
-                                        <!-- 選擇部位項目 [[loop.index]] -->
-                                        <!-- .select_parts-item -->
-                                        <li class="select_parts-item">
-                                            <label for="part-[[loop.index]]" class="item_label">
-                                                <input type="checkbox" class="item_input--checkbox" id="part-[[loop.index]]" value="[[p_item.part_name]]">
-                                                <div class="select_parts-item-inner">
-                                                    <span class="label">[[p_item.part_name]]</span>
-                                                    <span class="img">
-                                                        <img src="[[p_item.part_img]]" alt="[[p_item.part_name]]">
-                                                    </span>
-                                                </div>
-                                            </label>
-                                        </li>
-                                        <!-- /.select_parts-item END -->
-                                        <% endfor %>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popup-ft">
-                                <!-- 點擊後執行`handleSelection(isUnknown)`方法 -->
-                                <button onclick="xinyaoJs.handleSelection(true, this)" type="button" class="xinyao_btn xinyao_btn-no_part xinyao_btn-nobg">無/未知</button>
-                                <button onclick="xinyaoJs.handleSelection(false, this)" type="button" class="xinyao_btn xinyao_btn-has_part" disabled="true">確認</button>
-                            </div>
-                            <!-- 點擊後，關閉popup -->
-                            <button onclick="xinyaoJs.closePopup(this.closest('.popup'), 'clearLast')" type="button" class="popup-close">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- /.popup END -->
-                    <!-- 調理項目 [[loop.index]] END -->
                     <% endfor%>
                 </div>
             </div>

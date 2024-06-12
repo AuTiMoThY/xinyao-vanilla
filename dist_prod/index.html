@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-Hant">
+    <head>
+        <title>使用者登入 | 佛印山心藥系統</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Cache-Control" content="no-store" />
+
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="robots" content="noindex,nofollow" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <!-- 讓手機不判斷它是電話號碼變顏色-->
+        <meta name="format-detection" content="telephone=no" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="./assets/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#dbdcdc" />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&display=swap"
+            rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap"
+            rel="stylesheet" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer" />
+        <!-- <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/flatpickr.min.css"> -->
+        <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+
+        <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+
+        <script>
+            const baseUrl =
+                window.location.protocol +
+                "//" +
+                window.location.hostname +
+                (window.location.port ? ":" + window.location.port : "") +
+                "/";
+            console.log(baseUrl);
+        </script>
+
+        <link rel="stylesheet" href="./assets/css/style.css?v=20240612" />
+    </head>
+
+    <body class="">
+        <!-- =========================================================================-->
+        <!-- 頁面內容  START-->
+        <!-- =========================================================================-->
+        <main class="page_main page-login" id="loginApp">
+            <div class="brand" style="background-image: url(./assets/images/login-brand-2x.jpg)"></div>
+            <div class="header-mb" style="background-image: url(./assets/images/login-header.jpg)"></div>
+            <div class="login_wrap">
+                <h1 class="title svg-text">
+                    <span class="txt">心藥系統</span>
+                    <svg data-src="./assets/images/text-XinYaoXiTong.svg"></svg>
+                </h1>
+                <div class="login_block">
+                    <!-- 表單送出後，導頁至"xinyao-1.html" -->
+                    <!-- 相關JS: dist\assets\js\frontend\login.js -->
+                    <form class="xinyao_frm login_frm" id="loginForm">
+                        <div class="xinyao_frm-bd">
+                            <section class="form-group row">
+                                <div class="col-12">
+                                    <!-- 自定義輸入框 input-field 組件: dist\assets\js\xinyaoJs\customElements.js -->
+                                    <input-field class="xinyao_field xinyao_field-v">
+                                        <label for="user_id" class="xinyao_field-label">帳號</label>
+                                        <div class="xinyao_field-block">
+                                            <div class="xinyao_field-ctrler">
+                                                <input
+                                                    type="text"
+                                                    id="user_id"
+                                                    name="user_id"
+                                                    class="form-control"
+                                                    placeholder="請輸入手機號碼" />
+                                            </div>
+                                            <!-- 個別欄位錯誤信息 -->
+                                            <div class="error-msg"></div>
+                                        </div>
+                                    </input-field>
+                                </div>
+                            </section>
+                            <section class="form-group row">
+                                <div class="col-12">
+                                    <!-- 自定義輸入框 password-field 組件: dist\assets\js\xinyaoJs\customElements.js -->
+                                    <password-field
+                                        id="password_field"
+                                        class="xinyao_field xinyao_field-v password_field">
+                                        <label for="user_pw" class="xinyao_field-label">密碼</label>
+                                        <div class="xinyao_field-block">
+                                            <div class="xinyao_field-ctrler">
+                                                <input
+                                                    type="password"
+                                                    id="user_pw"
+                                                    name="user_pw"
+                                                    class="form-control"
+                                                    placeholder="請輸入密碼" />
+                                                <button type="button" class="toggle_password_btn">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                    <i class="fa-solid fa-eye-slash" style="display: none"></i>
+                                                </button>
+                                            </div>
+                                            <!-- 個別欄位錯誤信息 -->
+                                            <div class="error-msg"></div>
+                                        </div>
+                                    </password-field>
+                                </div>
+                            </section>
+                            <!-- 登入錯誤訊息 -->
+                            <div class="frm-error txt-danger text-center"></div>
+                        </div>
+                        <div class="xinyao_frm-ft">
+                            <!-- 自定義按鈕 submit-btn 組件: dist\assets\js\xinyaoJs\customElements.js -->
+                            <submit-btn>
+                                <button type="submit" class="xinyao_btn login_submit" data-sendingtxt="登入中...">
+                                    登入
+                                </button>
+                            </submit-btn>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- /.page_main END  !! -->
+        <!-- =========================================================================-->
+        <!-- 頁面內容  END  !!-->
+        <!-- =========================================================================-->
+
+        <script
+            type="text/javascript"
+            src="https://unpkg.com/external-svg-loader@latest/svg-loader.min.js"
+            async></script>
+        <!-- script -->
+        <!-- <script src="./assets/js/script.js?v=20240612"></script>
+        <script type="module" src="./assets/js/frontend/login.js?v=20240612"></script> -->
+
+        <script src="./assets/js/xinyaoJs/core.js?v=20240612"></script>
+
+        <!-- 自定義元素 -->
+        <script src="./assets/js/xinyaoJs/customElements.js?v=20240612"></script>
+
+        <!-- popup 開啟或關閉 -->
+        <script src="./assets/js/xinyaoJs/openPopup.js?v=20240612"></script>
+        <script src="./assets/js/xinyaoJs/closePopup.js?v=20240612"></script>
+
+        <!-- notification 開啟或關閉 -->
+        <script src="./assets/js/xinyaoJs/openNotification.js?v=20240612"></script>
+        <script src="./assets/js/xinyaoJs/closeNotification.js?v=20240612"></script>
+
+        <!-- dialog 開啟或關閉 -->
+        <script src="./assets/js/xinyaoJs/closeDialog.js?v=20240612"></script>
+
+        <!-- 選擇部位按鈕"無/未知"或"確定部位" -->
+        <script src="./assets/js/xinyaoJs/handleSelection.js?v=20240612"></script>
+        <!-- 加入至挑選中 -->
+        <script src="./assets/js/xinyaoJs/handleAddToList.js?v=20240612"></script>
+
+        <!-- 選擇部位的監聽器 -->
+        <script src="./assets/js/xinyaoJs/setupPartSelection.js?v=20240612"></script>
+
+        <!-- 設置當前選擇的項目 -->
+        <script src="./assets/js/xinyaoJs/setCurrentItem.js?v=20240612"></script>
+        <!-- 取得當前選擇的項目 -->
+        <script src="./assets/js/xinyaoJs/getCurrentItem.js?v=20240612"></script>
+        <!-- 清除當前選擇的項目 -->
+        <script src="./assets/js/xinyaoJs/clearCurrentItem.js?v=20240612"></script>
+        <!-- 設置挑選中項目 -->
+        <script src="./assets/js/xinyaoJs/setSelectedList.js?v=20240612"></script>
+        <!-- 取得挑選中項目 -->
+        <script src="./assets/js/xinyaoJs/getSelectedList.js?v=20240612"></script>
+        <!-- 更新數量 -->
+        <script src="./assets/js/xinyaoJs/updateCartNum.js?v=20240612"></script>
+
+        <!-- 開關search bar (手機版才會出現) -->
+        <script src="./assets/js/xinyaoJs/toggleSearch.js?v=20240612"></script>
+
+        <script src="./assets/js/frontend/main.js?v=20240612"></script>
+        <script src="./assets/js/frontend/login.js?v=20240612"></script>
+    </body>
+</html>

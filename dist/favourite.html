@@ -59,118 +59,6 @@
         <!-- ===  常用調理帖(favourite)頁面專用script === -->
         <script>
             const currentMenuItem = "favourite";
-            // 這邊示意:
-            // 撈出的資料，以JSON格式儲存在 favData
-            const favData = [
-                {
-                    status: "等待中",
-                    order_num: "20231226134755",
-                    p_name: "李OO的調理帖",
-                    p_value: "4",
-                    p_time: "1",
-                    p_point: "1",
-                    billing_date: "2023/12/24",
-                    run_date: "",
-                    u_name: "李OO",
-                    u_addr: "台中市南屯區",
-                    u_phone: "0912345678",
-                    p_detail: [
-                        {
-                            item_name: "莫名恐懼 (頭面部)",
-                            item_amount: "1",
-                        },
-                        {
-                            item_name: "莫名恐懼",
-                            item_amount: "1",
-                        },
-                        {
-                            item_name: "小膽怕怕 (右腳掌)",
-                            item_amount: "1",
-                        },
-                    ],
-                },
-                {
-                    status: "運行中",
-                    order_num: "20231226134755",
-                    p_name: "王XX的調理帖",
-                    p_value: "4",
-                    p_time: "1",
-                    p_point: "1",
-                    billing_date: "2023/12/24",
-                    run_date: "2023/12/26 10:15",
-                    u_name: "王XX",
-                    u_addr: "台北市中山區",
-                    u_phone: "0912345678",
-                    p_detail: [
-                        {
-                            item_name: "莫名恐懼 (頭面部)",
-                            item_amount: "1",
-                        },
-                        {
-                            item_name: "莫名恐懼",
-                            item_amount: "1",
-                        },
-                        {
-                            item_name: "小膽怕怕 (右腳掌)",
-                            item_amount: "1",
-                        },
-                    ],
-                },
-                {
-                    status: "已取消",
-                    order_num: "20231226134755",
-                    p_name: "調理帖名稱",
-                    p_value: "4",
-                    p_time: "1",
-                    p_point: "1",
-                    billing_date: "2023/12/20",
-                    run_date: "",
-                    u_name: "林XO",
-                    u_addr: "澎湖縣馬公市",
-                    u_phone: "0912345678",
-                    p_detail: [
-                        {
-                            item_name: "莫名恐懼 (頭面部)",
-                            item_amount: "1",
-                        },
-                        {
-                            item_name: "莫名恐懼",
-                            item_amount: "1",
-                        },
-                        {
-                            item_name: "小膽怕怕 (右腳掌)",
-                            item_amount: "1",
-                        },
-                    ],
-                },
-                {
-                    status: "已完成",
-                    order_num: "20231226134755",
-                    p_name: "調理帖名稱666",
-                    p_value: "4",
-                    p_time: "1",
-                    p_point: "1",
-                    billing_date: "2023/12/19",
-                    run_date: "2023/12/20 10:15",
-                    u_name: "劉OO",
-                    u_addr: "台北市北投區",
-                    u_phone: "0912345678",
-                    p_detail: [
-                        {
-                            item_name: "莫名恐懼 (頭面部)",
-                            item_amount: "1",
-                        },
-                        {
-                            item_name: "莫名恐懼",
-                            item_amount: "1",
-                        },
-                        {
-                            item_name: "小膽怕怕 (右腳掌)",
-                            item_amount: "1",
-                        },
-                    ],
-                },
-            ];
         </script>
     </head>
 
@@ -198,9 +86,9 @@
                                 </div>
                             </div>
                             <div class="ctrl-btns">
-                                <button class="ctrl-btn" @click="handleSearch">
-                                    <img src="./assets/images/icon-search.svg" alt="" />
-                                    <img src="./assets/images/icon-close.svg" alt="" />
+                                <button class="ctrl-btn" onclick="xinyaoJs.toggleSearch()">
+                                    <img class="open_search" src="./assets/images/icon-search.svg" alt="" />
+                                    <img class="close_search" src="./assets/images/icon-close.svg" alt="" />
                                 </button>
                                 <a class="ctrl-btn" href="./home.html"
                                     ><img src="./assets/images/icon-home.svg" alt=""
@@ -313,15 +201,15 @@
                                                 <div class="inner">
                                                     <div class="txt">恐懼</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">莫名恐懼</a>
+                                                        <a href="./xinyao-1.html" class="note-link">莫名恐懼</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">抓狂暴衝</a>
+                                                        <a href="./xinyao-1.html" class="note-link">抓狂暴衝</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">小膽怕怕</a>
+                                                        <a href="./xinyao-1.html" class="note-link">小膽怕怕</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">過度擔憂</a>
+                                                        <a href="./xinyao-1.html" class="note-link">過度擔憂</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">驚慌失措</a>
+                                                        <a href="./xinyao-1.html" class="note-link">驚慌失措</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -330,15 +218,15 @@
                                                 <div class="inner">
                                                     <div class="txt">茫然</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">舉棋不定</a>
+                                                        <a href="./xinyao-1.html" class="note-link">舉棋不定</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">挫折消沉</a>
+                                                        <a href="./xinyao-1.html" class="note-link">挫折消沉</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">絕望重鬱</a>
+                                                        <a href="./xinyao-1.html" class="note-link">絕望重鬱</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">怠惰沒勁</a>
+                                                        <a href="./xinyao-1.html" class="note-link">怠惰沒勁</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">優柔寡斷</a>
+                                                        <a href="./xinyao-1.html" class="note-link">優柔寡斷</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -347,17 +235,17 @@
                                                 <div class="inner">
                                                     <div class="txt">妄念</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">重複犯錯</a>
+                                                        <a href="./xinyao-1.html" class="note-link">重複犯錯</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">妄想未來</a>
+                                                        <a href="./xinyao-1.html" class="note-link">妄想未來</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">沉溺過去</a>
+                                                        <a href="./xinyao-1.html" class="note-link">沉溺過去</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">不時憂鬱</a>
+                                                        <a href="./xinyao-1.html" class="note-link">不時憂鬱</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">失控思緒</a>
+                                                        <a href="./xinyao-1.html" class="note-link">失控思緒</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">生活無趣</a>
+                                                        <a href="./xinyao-1.html" class="note-link">生活無趣</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -366,13 +254,13 @@
                                                 <div class="inner">
                                                     <div class="txt">寂寞</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">漫無目標</a>
+                                                        <a href="./xinyao-1.html" class="note-link">漫無目標</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">表現存在</a>
+                                                        <a href="./xinyao-1.html" class="note-link">表現存在</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">性急浮躁</a>
+                                                        <a href="./xinyao-1.html" class="note-link">性急浮躁</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">孤傲不群</a>
+                                                        <a href="./xinyao-1.html" class="note-link">孤傲不群</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -381,15 +269,15 @@
                                                 <div class="inner">
                                                     <div class="txt">敏感</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">表面快樂</a>
+                                                        <a href="./xinyao-1.html" class="note-link">表面快樂</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">唯諾服務</a>
+                                                        <a href="./xinyao-1.html" class="note-link">唯諾服務</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">怨瞋復仇</a>
+                                                        <a href="./xinyao-1.html" class="note-link">怨瞋復仇</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">生活驟變</a>
+                                                        <a href="./xinyao-1.html" class="note-link">生活驟變</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">佔有依賴</a>
+                                                        <a href="./xinyao-1.html" class="note-link">佔有依賴</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -398,17 +286,17 @@
                                                 <div class="inner">
                                                     <div class="txt">負面</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">過度細節</a>
+                                                        <a href="./xinyao-1.html" class="note-link">過度細節</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">喪失自信</a>
+                                                        <a href="./xinyao-1.html" class="note-link">喪失自信</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">罪己自責</a>
+                                                        <a href="./xinyao-1.html" class="note-link">罪己自責</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">驚嚇創傷</a>
+                                                        <a href="./xinyao-1.html" class="note-link">驚嚇創傷</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">悲苦折磨</a>
+                                                        <a href="./xinyao-1.html" class="note-link">悲苦折磨</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">怨天尤人</a>
+                                                        <a href="./xinyao-1.html" class="note-link">怨天尤人</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -417,19 +305,19 @@
                                                 <div class="inner">
                                                     <div class="txt">重擔</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">身心耗竭</a>
+                                                        <a href="./xinyao-1.html" class="note-link">身心耗竭</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">老牛拖車</a>
+                                                        <a href="./xinyao-1.html" class="note-link">老牛拖車</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">責任硬撐</a>
+                                                        <a href="./xinyao-1.html" class="note-link">責任硬撐</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">標準苛刻</a>
+                                                        <a href="./xinyao-1.html" class="note-link">標準苛刻</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">嚴格律己</a>
+                                                        <a href="./xinyao-1.html" class="note-link">嚴格律己</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">工作狂熱</a>
+                                                        <a href="./xinyao-1.html" class="note-link">工作狂熱</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">獨裁支配</a>
+                                                        <a href="./xinyao-1.html" class="note-link">獨裁支配</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -438,11 +326,11 @@
                                                 <div class="inner">
                                                     <div class="txt">靈性及業力</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">好運富足</a>
+                                                        <a href="./xinyao-1.html" class="note-link">好運富足</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">光明灌頂</a>
+                                                        <a href="./xinyao-1.html" class="note-link">光明灌頂</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">靈性加持</a>
+                                                        <a href="./xinyao-1.html" class="note-link">靈性加持</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -501,19 +389,20 @@
                             <div class="favourite__datatable-td grid-cell p_value">調理值</div>
                             <div class="favourite__datatable-td grid-cell action">操作</div>
                         </div>
-                        <div class="favourite__datatable-data grid-tablerow" v-for="(item, index) in data" :key="index">
-                            <div class="favourite__datatable-td grid-cell p_name" data-th="名稱">{{item.p_name}}</div>
-                            <div class="favourite__datatable-td grid-cell p_value" data-th="調理值">
-                                {{item.p_value}}
-                            </div>
+                        <!-- 總共有: 4 筆 -->
+
+                        <!-- 第 1 筆調理帖 -->
+                        <div class="favourite__datatable-data grid-tablerow">
+                            <div class="favourite__datatable-td grid-cell p_name" data-th="名稱">李OO的調理帖</div>
+                            <div class="favourite__datatable-td grid-cell p_value" data-th="調理值">4</div>
                             <div class="favourite__datatable-td grid-cell action" data-th="操作">
                                 <!-- 點擊後開關操作選單 -->
-                                <button class="action_btn" @click="toggleMenu(index)">
+                                <button class="action_btn" onclick="toggleMenu(this)">
                                     <svg data-src="./assets/images/icon-dropdownmenu.svg"></svg>
                                 </button>
-                                <div class="action_menu" v-show="currentActionMenuIndex === index">
+                                <div class="action_menu">
                                     <!-- 點擊後顯示詳細資訊 -->
-                                    <button class="action_menu-btn" @click="showDetail(item)">
+                                    <button class="action_menu-btn" onclick="showDetail(this)">
                                         <span class="icon">
                                             <svg data-src="./assets/images/icon-info.svg"></svg>
                                         </span>
@@ -521,7 +410,7 @@
                                     </button>
                                     <div class="hr"></div>
                                     <!-- 點擊後運行 -->
-                                    <button class="action_menu-btn" @click="playItem(item)">
+                                    <button class="action_menu-btn" onclick="playItem(this)">
                                         <span class="icon">
                                             <svg data-src="./assets/images/icon-play_circle.svg"></svg>
                                         </span>
@@ -529,7 +418,7 @@
                                     </button>
                                     <div class="hr"></div>
                                     <!-- 點擊後移除 -->
-                                    <button class="action_menu-btn" @click="removeItem(index)">
+                                    <button class="action_menu-btn" onclick="removeItem(this)">
                                         <span class="icon">
                                             <svg data-src="./assets/images/icon-delete.svg"></svg>
                                         </span>
@@ -537,66 +426,440 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 調理帖明細 popup -->
-                <div v-if="showPopupDetail" class="popup popup_detail">
-                    <div class="popup-block">
-                        <div class="popup-hd">
-                            <b class="popup-title txt-main-color">調理帖明細</b>
-                        </div>
-                        <div class="popup-bd">
-                            <div class="favourite_detail__datatable grid-table">
-                                <div class="favourite_detail__datatable-heading grid-tablerow">
-                                    <div class="favourite_detail__datatable-th grid-cell name">調理項目</div>
-                                    <div class="favourite_detail__datatable-th grid-cell amount">份量</div>
-                                </div>
-                                <div
-                                    class="grid-tablerow favourite_detail__datatable-list"
-                                    v-for="(item, index) in favourite_detail_arr"
-                                    :key="index">
-                                    <div class="favourite_detail__datatable-td grid-cell name" data-th="調理項目">
-                                        {{ item.item_name }}
+                            <div class="popup popup_detail js-hidden">
+                                <div class="popup-block">
+                                    <div class="popup-hd">
+                                        <b class="popup-title txt-main-color">調理帖明細</b>
                                     </div>
-                                    <div class="favourite_detail__datatable-td grid-cell amount" data-th="份量">
-                                        {{ item.item_amount }}
+                                    <div class="popup-bd">
+                                        <div class="favourite_detail__datatable grid-table">
+                                            <div class="favourite_detail__datatable-heading grid-tablerow">
+                                                <div class="favourite_detail__datatable-th grid-cell name">
+                                                    調理項目
+                                                </div>
+                                                <div class="favourite_detail__datatable-th grid-cell amount">份量</div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    莫名恐懼 (頭面部)
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    2
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    莫名恐懼
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    1
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    小膽怕怕 (右腳掌)
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    1
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-total">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    調理值
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    4
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="grid-tablerow favourite_detail__datatable-total">
-                                    <div class="favourite_detail__datatable-td grid-cell name" data-th="調理項目">
-                                        調理值
-                                    </div>
-                                    <div class="favourite_detail__datatable-td grid-cell amount" data-th="份量">
-                                        {{ favourite_detail_value_sum }}
-                                    </div>
+                                    <div class="popup-ft"></div>
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'))"
+                                        type="button"
+                                        class="popup-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="popup-ft"></div>
-                        <button @click="showPopupDetail = false" type="button" class="popup-close">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
+
+                        <!-- 第 2 筆調理帖 -->
+                        <div class="favourite__datatable-data grid-tablerow">
+                            <div class="favourite__datatable-td grid-cell p_name" data-th="名稱">王XX的調理帖</div>
+                            <div class="favourite__datatable-td grid-cell p_value" data-th="調理值">3</div>
+                            <div class="favourite__datatable-td grid-cell action" data-th="操作">
+                                <!-- 點擊後開關操作選單 -->
+                                <button class="action_btn" onclick="toggleMenu(this)">
+                                    <svg data-src="./assets/images/icon-dropdownmenu.svg"></svg>
+                                </button>
+                                <div class="action_menu">
+                                    <!-- 點擊後顯示詳細資訊 -->
+                                    <button class="action_menu-btn" onclick="showDetail(this)">
+                                        <span class="icon">
+                                            <svg data-src="./assets/images/icon-info.svg"></svg>
+                                        </span>
+                                        <span class="txt">調理帖明細</span>
+                                    </button>
+                                    <div class="hr"></div>
+                                    <!-- 點擊後運行 -->
+                                    <button class="action_menu-btn" onclick="playItem(this)">
+                                        <span class="icon">
+                                            <svg data-src="./assets/images/icon-play_circle.svg"></svg>
+                                        </span>
+                                        <span class="txt">運行</span>
+                                    </button>
+                                    <div class="hr"></div>
+                                    <!-- 點擊後移除 -->
+                                    <button class="action_menu-btn" onclick="removeItem(this)">
+                                        <span class="icon">
+                                            <svg data-src="./assets/images/icon-delete.svg"></svg>
+                                        </span>
+                                        <span class="txt">刪除</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="popup popup_detail js-hidden">
+                                <div class="popup-block">
+                                    <div class="popup-hd">
+                                        <b class="popup-title txt-main-color">調理帖明細</b>
+                                    </div>
+                                    <div class="popup-bd">
+                                        <div class="favourite_detail__datatable grid-table">
+                                            <div class="favourite_detail__datatable-heading grid-tablerow">
+                                                <div class="favourite_detail__datatable-th grid-cell name">
+                                                    調理項目
+                                                </div>
+                                                <div class="favourite_detail__datatable-th grid-cell amount">份量</div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    莫名恐懼 (頭面部)
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    1
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    莫名恐懼
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    1
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    小膽怕怕 (右腳掌)
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    1
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-total">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    調理值
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    3
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popup-ft"></div>
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'))"
+                                        type="button"
+                                        class="popup-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 第 3 筆調理帖 -->
+                        <div class="favourite__datatable-data grid-tablerow">
+                            <div class="favourite__datatable-td grid-cell p_name" data-th="名稱">調理帖名稱</div>
+                            <div class="favourite__datatable-td grid-cell p_value" data-th="調理值">4</div>
+                            <div class="favourite__datatable-td grid-cell action" data-th="操作">
+                                <!-- 點擊後開關操作選單 -->
+                                <button class="action_btn" onclick="toggleMenu(this)">
+                                    <svg data-src="./assets/images/icon-dropdownmenu.svg"></svg>
+                                </button>
+                                <div class="action_menu">
+                                    <!-- 點擊後顯示詳細資訊 -->
+                                    <button class="action_menu-btn" onclick="showDetail(this)">
+                                        <span class="icon">
+                                            <svg data-src="./assets/images/icon-info.svg"></svg>
+                                        </span>
+                                        <span class="txt">調理帖明細</span>
+                                    </button>
+                                    <div class="hr"></div>
+                                    <!-- 點擊後運行 -->
+                                    <button class="action_menu-btn" onclick="playItem(this)">
+                                        <span class="icon">
+                                            <svg data-src="./assets/images/icon-play_circle.svg"></svg>
+                                        </span>
+                                        <span class="txt">運行</span>
+                                    </button>
+                                    <div class="hr"></div>
+                                    <!-- 點擊後移除 -->
+                                    <button class="action_menu-btn" onclick="removeItem(this)">
+                                        <span class="icon">
+                                            <svg data-src="./assets/images/icon-delete.svg"></svg>
+                                        </span>
+                                        <span class="txt">刪除</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="popup popup_detail js-hidden">
+                                <div class="popup-block">
+                                    <div class="popup-hd">
+                                        <b class="popup-title txt-main-color">調理帖明細</b>
+                                    </div>
+                                    <div class="popup-bd">
+                                        <div class="favourite_detail__datatable grid-table">
+                                            <div class="favourite_detail__datatable-heading grid-tablerow">
+                                                <div class="favourite_detail__datatable-th grid-cell name">
+                                                    調理項目
+                                                </div>
+                                                <div class="favourite_detail__datatable-th grid-cell amount">份量</div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    莫名恐懼 (頭面部)
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    1
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    莫名恐懼
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    2
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    小膽怕怕 (右腳掌)
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    1
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-total">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    調理值
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    4
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popup-ft"></div>
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'))"
+                                        type="button"
+                                        class="popup-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 第 4 筆調理帖 -->
+                        <div class="favourite__datatable-data grid-tablerow">
+                            <div class="favourite__datatable-td grid-cell p_name" data-th="名稱">調理帖名稱666</div>
+                            <div class="favourite__datatable-td grid-cell p_value" data-th="調理值">2</div>
+                            <div class="favourite__datatable-td grid-cell action" data-th="操作">
+                                <!-- 點擊後開關操作選單 -->
+                                <button class="action_btn" onclick="toggleMenu(this)">
+                                    <svg data-src="./assets/images/icon-dropdownmenu.svg"></svg>
+                                </button>
+                                <div class="action_menu">
+                                    <!-- 點擊後顯示詳細資訊 -->
+                                    <button class="action_menu-btn" onclick="showDetail(this)">
+                                        <span class="icon">
+                                            <svg data-src="./assets/images/icon-info.svg"></svg>
+                                        </span>
+                                        <span class="txt">調理帖明細</span>
+                                    </button>
+                                    <div class="hr"></div>
+                                    <!-- 點擊後運行 -->
+                                    <button class="action_menu-btn" onclick="playItem(this)">
+                                        <span class="icon">
+                                            <svg data-src="./assets/images/icon-play_circle.svg"></svg>
+                                        </span>
+                                        <span class="txt">運行</span>
+                                    </button>
+                                    <div class="hr"></div>
+                                    <!-- 點擊後移除 -->
+                                    <button class="action_menu-btn" onclick="removeItem(this)">
+                                        <span class="icon">
+                                            <svg data-src="./assets/images/icon-delete.svg"></svg>
+                                        </span>
+                                        <span class="txt">刪除</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="popup popup_detail js-hidden">
+                                <div class="popup-block">
+                                    <div class="popup-hd">
+                                        <b class="popup-title txt-main-color">調理帖明細</b>
+                                    </div>
+                                    <div class="popup-bd">
+                                        <div class="favourite_detail__datatable grid-table">
+                                            <div class="favourite_detail__datatable-heading grid-tablerow">
+                                                <div class="favourite_detail__datatable-th grid-cell name">
+                                                    調理項目
+                                                </div>
+                                                <div class="favourite_detail__datatable-th grid-cell amount">份量</div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    莫名恐懼 (頭面部)
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    1
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-list">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    莫名恐懼
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    1
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-tablerow favourite_detail__datatable-total">
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell name"
+                                                    data-th="調理項目">
+                                                    調理值
+                                                </div>
+                                                <div
+                                                    class="favourite_detail__datatable-td grid-cell amount"
+                                                    data-th="份量">
+                                                    2
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popup-ft"></div>
+                                    <button
+                                        onclick="xinyaoJs.closePopup(this.closest('.popup'))"
+                                        type="button"
+                                        class="popup-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 對話框 -->
-                <div class="dialog" v-if="showDialog && data[currentActionMenuIndex]">
+                <div class="dialog js-hidden" data-dialog="remove">
                     <div class="dialog-block">
                         <div class="dialog-title">刪除確認</div>
                         <div class="dialog-cnt">
-                            您確定要刪除<button class="link" @click="showDetail(data[currentActionMenuIndex])">
-                                {{ data[currentActionMenuIndex].p_name }}</button
-                            >嗎?
+                            您確定要刪除<button class="link"><span class="dialog__name"></span></button>嗎?
                         </div>
                         <div class="dialog-btns">
-                            <button
-                                @click="handleRemove(currentActionMenuIndex)"
-                                type="button"
-                                class="xinyao_btn xinyao_btn-nobg">
+                            <button onclick="handleRemove()" type="button" class="xinyao_btn xinyao_btn-nobg">
                                 刪除
                             </button>
-                            <button @click="showDialog = false" type="button" class="xinyao_btn">保留</button>
+                            <button
+                                onclick="xinyaoJs.closeDialog(this.closest('.dialog'))"
+                                type="button"
+                                class="xinyao_btn">
+                                保留
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notification js-hidden" data-ref="notification-remove">
+                    <div class="notification-block">
+                        <div class="notification-icon">
+                            <svg data-src="./assets/images/icon-check_circle.svg"></svg>
+                        </div>
+                        <div class="notification-title">刪除成功</div>
+                        <div class="notification-cnt">
+                            理帖<span class="link"><span class="notification__name"></span></span>已成功刪除。
                         </div>
                     </div>
                 </div>
@@ -653,8 +916,11 @@
         <!-- 更新數量 -->
         <script src="./assets/js/xinyaoJs/updateCartNum.js?v="></script>
 
+        <!-- 開關search bar (手機版才會出現) -->
+        <script src="./assets/js/xinyaoJs/toggleSearch.js?v="></script>
+
         <script src="./assets/js/frontend/main.js?v="></script>
 
-        <script type="module" src="./assets/js/frontend/favourite.js?v="></script>
+        <script src="./assets/js/frontend/favourite.js?v="></script>
     </body>
 </html>

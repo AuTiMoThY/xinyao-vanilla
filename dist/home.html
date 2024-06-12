@@ -59,161 +59,6 @@
         <!-- ===  手機版選單頁面專用script === -->
         <script>
             const currentMenuItem = "home";
-            // 這邊示意:
-            // 撈出的資料，以JSON儲存在 currentSubCateData
-            const currentSubCateData = [
-                {
-                    txt: "恐懼",
-                    note: "莫名恐懼/抓狂暴衝/小膽怕怕/過度擔憂/驚慌失措",
-                    item: [
-                        {
-                            name: "莫名恐懼",
-                            directions:
-                                "釋放遭受恐懼與擔憂困擾卻找不到原因的情緒。<br>莫名、無以名狀的恐懼，沒有原因的、沒有解釋的。<br>怕什麼不幸的事情將會降臨，但說不出是什麼、為什麼。<br>神經質，容易緊張焦慮。<br>對未來常有不祥的預感。<br>當被問及為何害怕，卻說不出理由。<br>感到不明原因且無法以言語解釋的不安或恐懼。",
-                            parts: [
-                                {
-                                    part_name: "頭面部",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827170913961396.jpeg",
-                                },
-                                {
-                                    part_name: "右頸胸肩",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827171071177117.jpeg",
-                                },
-                                {
-                                    part_name: "左腿內側",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827171340944094.jpeg",
-                                },
-                                {
-                                    part_name: "背部軀幹",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827171265736573.jpeg",
-                                },
-                            ],
-                        },
-                        {
-                            name: "抓狂暴衝",
-                            directions:
-                                "釋放害怕失控而傷害自己或他人的情緒。 <br>害怕自己精神錯亂、頭腦抓狂。當心裡受到太大的壓力或傷害時，快要控制不住自己的情緒，幾至崩潰抓狂時。每個人都有情緒失控、失去理性的時候，想報復、想傷害他人或自己、不斷哭泣、暴怒，或任何強烈情緒，都適用。對理性無法運作，變得無法控制自己而感到不安。",
-                            parts: [
-                                {
-                                    part_name: "背部軀幹",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827173147854785.jpeg",
-                                },
-                                {
-                                    part_name: "腿部正面",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827173368266826.jpeg",
-                                },
-                                {
-                                    part_name: "男性 陰部",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827173496559655.jpeg",
-                                },
-                                {
-                                    part_name: "女性陰部",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/2017082717370232232.jpeg",
-                                },
-                            ],
-                        },
-                        {
-                            name: "小膽怕怕",
-                            directions:
-                                "釋放擔心任何已知的、預設的恐懼情緒。 <br>這類型的人通常害羞而膽小安靜，有禮貌卻不善交際，常避免跟陌生人講話，清楚讓自己產生恐懼及不安的對象，對於任何已知原因的恐懼，舉凡怕高、怕昆蟲、怕死、怕黑、怯場等，都適用小膽怕怕心藥。可幫助這類型的人更有膽量，有勇氣表達自己。",
-                            parts: [
-                                {
-                                    part_name: "右頸胸肩",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827190985268526.jpeg",
-                                },
-                                {
-                                    part_name: "背部軀幹",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/2017082719110687687.jpeg",
-                                },
-                                {
-                                    part_name: "胸腹軀幹",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827191211301130.jpeg",
-                                },
-                                {
-                                    part_name: "左臂前方",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827191456405640.jpeg",
-                                },
-                                {
-                                    part_name: "右腳掌",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827191655635563.jpeg",
-                                },
-                                {
-                                    part_name: "男性 陰部",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827191780038003.jpeg",
-                                },
-                            ],
-                        },
-                        {
-                            name: "過度擔憂",
-                            directions:
-                                "釋放過度擔心親人安危福祉而內心不安的情緒。<br>為別人的福祉擔憂，像媽媽一樣，過度為他人擔憂，可能每隔幾分鐘就查看一次小孩，或是親人稍微晚歸就憂心忡忡。不斷對他人噓寒問暖。如果關心的人失聯一會兒，就設想各種意外狀況，擔心得發狂。",
-                            parts: [
-                                {
-                                    part_name: "左頸胸肩",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827192299259925.jpeg",
-                                },
-                                {
-                                    part_name: "背部軀幹",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827192341154115.jpeg",
-                                },
-                                {
-                                    part_name: "右手掌背",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827192443384338.jpeg",
-                                },
-                            ],
-                        },
-                        {
-                            name: "驚慌失措",
-                            directions:
-                                "釋放被意外事件驚嚇而驚惶的情緒。 <br>驚慌失措心藥對應最強烈的恐懼，例如半夜被惡夢驚醒，或經歷意外事件而驚駭恐慌。可能怕得全身顫抖冷汗直流，呆住了，大腦整個停止運作，眩暈。驚慌失措心藥能讓身心平靜，消除緊張，掌控狀況。感到極度恐懼，陷入恐慌的狀態之中。",
-                            parts: [
-                                {
-                                    part_name: "胸腹軀幹",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827192524372437.jpeg",
-                                },
-                                {
-                                    part_name: "臀部",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827192763366336.jpeg",
-                                },
-                                {
-                                    part_name: "大腿",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827192958695869.jpeg",
-                                },
-                                {
-                                    part_name: "大腿",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/2017082719300735735.jpeg",
-                                },
-                                {
-                                    part_name: "小腿",
-                                    part_img:
-                                        "http://maha-sati.org/admin/attached/media/20170827/20170827193119051905.jpeg",
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ];
         </script>
     </head>
 
@@ -241,9 +86,9 @@
                                 </div>
                             </div>
                             <div class="ctrl-btns">
-                                <button class="ctrl-btn" @click="handleSearch">
-                                    <img src="./assets/images/icon-search.svg" alt="" />
-                                    <img src="./assets/images/icon-close.svg" alt="" />
+                                <button class="ctrl-btn" onclick="xinyaoJs.toggleSearch()">
+                                    <img class="open_search" src="./assets/images/icon-search.svg" alt="" />
+                                    <img class="close_search" src="./assets/images/icon-close.svg" alt="" />
                                 </button>
                                 <a class="ctrl-btn" href="./home.html"
                                     ><img src="./assets/images/icon-home.svg" alt=""
@@ -356,15 +201,15 @@
                                                 <div class="inner">
                                                     <div class="txt">恐懼</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">莫名恐懼</a>
+                                                        <a href="./xinyao-1.html" class="note-link">莫名恐懼</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">抓狂暴衝</a>
+                                                        <a href="./xinyao-1.html" class="note-link">抓狂暴衝</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">小膽怕怕</a>
+                                                        <a href="./xinyao-1.html" class="note-link">小膽怕怕</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">過度擔憂</a>
+                                                        <a href="./xinyao-1.html" class="note-link">過度擔憂</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">驚慌失措</a>
+                                                        <a href="./xinyao-1.html" class="note-link">驚慌失措</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -373,15 +218,15 @@
                                                 <div class="inner">
                                                     <div class="txt">茫然</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">舉棋不定</a>
+                                                        <a href="./xinyao-1.html" class="note-link">舉棋不定</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">挫折消沉</a>
+                                                        <a href="./xinyao-1.html" class="note-link">挫折消沉</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">絕望重鬱</a>
+                                                        <a href="./xinyao-1.html" class="note-link">絕望重鬱</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">怠惰沒勁</a>
+                                                        <a href="./xinyao-1.html" class="note-link">怠惰沒勁</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">優柔寡斷</a>
+                                                        <a href="./xinyao-1.html" class="note-link">優柔寡斷</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -390,17 +235,17 @@
                                                 <div class="inner">
                                                     <div class="txt">妄念</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">重複犯錯</a>
+                                                        <a href="./xinyao-1.html" class="note-link">重複犯錯</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">妄想未來</a>
+                                                        <a href="./xinyao-1.html" class="note-link">妄想未來</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">沉溺過去</a>
+                                                        <a href="./xinyao-1.html" class="note-link">沉溺過去</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">不時憂鬱</a>
+                                                        <a href="./xinyao-1.html" class="note-link">不時憂鬱</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">失控思緒</a>
+                                                        <a href="./xinyao-1.html" class="note-link">失控思緒</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">生活無趣</a>
+                                                        <a href="./xinyao-1.html" class="note-link">生活無趣</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -409,13 +254,13 @@
                                                 <div class="inner">
                                                     <div class="txt">寂寞</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">漫無目標</a>
+                                                        <a href="./xinyao-1.html" class="note-link">漫無目標</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">表現存在</a>
+                                                        <a href="./xinyao-1.html" class="note-link">表現存在</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">性急浮躁</a>
+                                                        <a href="./xinyao-1.html" class="note-link">性急浮躁</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">孤傲不群</a>
+                                                        <a href="./xinyao-1.html" class="note-link">孤傲不群</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -424,15 +269,15 @@
                                                 <div class="inner">
                                                     <div class="txt">敏感</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">表面快樂</a>
+                                                        <a href="./xinyao-1.html" class="note-link">表面快樂</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">唯諾服務</a>
+                                                        <a href="./xinyao-1.html" class="note-link">唯諾服務</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">怨瞋復仇</a>
+                                                        <a href="./xinyao-1.html" class="note-link">怨瞋復仇</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">生活驟變</a>
+                                                        <a href="./xinyao-1.html" class="note-link">生活驟變</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">佔有依賴</a>
+                                                        <a href="./xinyao-1.html" class="note-link">佔有依賴</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -441,17 +286,17 @@
                                                 <div class="inner">
                                                     <div class="txt">負面</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">過度細節</a>
+                                                        <a href="./xinyao-1.html" class="note-link">過度細節</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">喪失自信</a>
+                                                        <a href="./xinyao-1.html" class="note-link">喪失自信</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">罪己自責</a>
+                                                        <a href="./xinyao-1.html" class="note-link">罪己自責</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">驚嚇創傷</a>
+                                                        <a href="./xinyao-1.html" class="note-link">驚嚇創傷</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">悲苦折磨</a>
+                                                        <a href="./xinyao-1.html" class="note-link">悲苦折磨</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">怨天尤人</a>
+                                                        <a href="./xinyao-1.html" class="note-link">怨天尤人</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -460,19 +305,19 @@
                                                 <div class="inner">
                                                     <div class="txt">重擔</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">身心耗竭</a>
+                                                        <a href="./xinyao-1.html" class="note-link">身心耗竭</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">老牛拖車</a>
+                                                        <a href="./xinyao-1.html" class="note-link">老牛拖車</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">責任硬撐</a>
+                                                        <a href="./xinyao-1.html" class="note-link">責任硬撐</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">標準苛刻</a>
+                                                        <a href="./xinyao-1.html" class="note-link">標準苛刻</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">嚴格律己</a>
+                                                        <a href="./xinyao-1.html" class="note-link">嚴格律己</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">工作狂熱</a>
+                                                        <a href="./xinyao-1.html" class="note-link">工作狂熱</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">獨裁支配</a>
+                                                        <a href="./xinyao-1.html" class="note-link">獨裁支配</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -481,11 +326,11 @@
                                                 <div class="inner">
                                                     <div class="txt">靈性及業力</div>
                                                     <div class="note">
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">好運富足</a>
+                                                        <a href="./xinyao-1.html" class="note-link">好運富足</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">光明灌頂</a>
+                                                        <a href="./xinyao-1.html" class="note-link">光明灌頂</a>
 
-                                                        <a href="./xinyao-1-mobile.html" class="note-link">靈性加持</a>
+                                                        <a href="./xinyao-1.html" class="note-link">靈性加持</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -588,8 +433,17 @@
         <!-- 更新數量 -->
         <script src="./assets/js/xinyaoJs/updateCartNum.js?v="></script>
 
+        <!-- 開關search bar (手機版才會出現) -->
+        <script src="./assets/js/xinyaoJs/toggleSearch.js?v="></script>
+
         <script src="./assets/js/frontend/main.js?v="></script>
 
-        <script type="module" src="./assets/js/frontend/xinyao.js?v="></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const asideInnerElm = document.querySelector(".site_aside-inner");
+                console.log(asideInnerElm);
+                asideInnerElm.classList.add("js-show");
+            });
+        </script>
     </body>
 </html>

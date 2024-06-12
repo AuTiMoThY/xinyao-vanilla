@@ -3,9 +3,12 @@
     grid-template-columns: 360px 1fr;
 
     width: 100%;
+    min-width: 800 + 360px;
 
     @include rwd-mobile {
         display: block;
+
+        min-width: 0;
         padding-top: 78px;
     }
 }

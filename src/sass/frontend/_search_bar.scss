@@ -22,7 +22,7 @@
 
         transition: all 0.3s ease-in-out;
 
-        &.js-open {
+        &.js-open, .js-open-search & {
             display: flex;
             max-height: 150px;
             padding: var(--spacing-2x);
